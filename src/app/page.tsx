@@ -1,19 +1,19 @@
 import Image from "next/image";
-import { SignIn } from "./components/sign-in/signIn";
 import { auth } from "@/auth";
 import { signOut } from "@/auth";
+import { Navigation } from "./components/navigation/navigation";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Container />
+    <main className="">
+      <Navigation />
     </main>
   );
 }
 
 export async function Container() {
   const session = await auth();
-
+/*
   return (
     <div>
       {session && session.user ? (
@@ -29,5 +29,7 @@ export async function Container() {
         <SignIn />
       )}
     </div>
-  );
+  );*/
+
+ 
 }
