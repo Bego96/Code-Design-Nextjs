@@ -2,34 +2,15 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import { signOut } from "@/auth";
 import { Navigation } from "./components/navigation/navigation";
+import { Test } from "./components/testComponent/test";
 
 export default function Home() {
+
+  
   return (
     <main className="">
-      <Navigation />
+      <Test />
     </main>
   );
 }
 
-export async function Container() {
-  const session = await auth();
-/*
-  return (
-    <div>
-      {session && session.user ? (
-        <form
-          action={async () => {
-            "use server";
-            await signOut();
-          }}
-        >
-          <button type="submit">Sign out</button>
-        </form>
-      ) : (
-        <SignIn />
-      )}
-    </div>
-  );*/
-
- 
-}
