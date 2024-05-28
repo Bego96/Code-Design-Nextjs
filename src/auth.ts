@@ -30,7 +30,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log({credentials})
         if (credentials.email === "begic.ismar96@gmail.com" && credentials.password === "RandomNpc") {
           return {email: credentials.email, admin: true}
-        } else return null;
+        } else throw new Error("Invalid email or password");
         
       },
     }),

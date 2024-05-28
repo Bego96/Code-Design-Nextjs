@@ -6,11 +6,10 @@ export async function POST(request: Request) {
   try {
     const { first_name, last_name, email, password } = await request.json();
     // validate login credentials
-    console.log(first_name + " " + last_name + " " + email + " " + password)
-
+  
     const hashedPassword = await hash(password, 10);
 
-    console.log(hashedPassword)
+   
     //Put data into Firebase database
     const addToDb = await addDoc(collection(db, "users"), {
       first_name: first_name,
