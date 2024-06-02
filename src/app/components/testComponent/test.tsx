@@ -8,10 +8,12 @@ export async function Test() {
     const session = await auth();
     const user = session?.user;
 
-    
+    console.log("USER" + user)
     if (user?.admin) {
         return (
-            <div><p>Im for admins only</p></div>
+            <div><p>Im for admins only</p>
+            <img src={user?.image} />
+            </div>
         )
     } else {
         return (

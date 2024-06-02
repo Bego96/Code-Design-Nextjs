@@ -26,9 +26,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         email: { label: "Email", type: "email"},
         password: { label: "Password", type: "password"},
       },
-      authorize: async (credentials) => {
+      authorize: async (credentials): Promise<any> => {
         console.log({credentials})
-        if (credentials.email === "begic.ismar96@gmail.com" && credentials.password === "RandomNpc") {
+
+        let users = collection(db, "users")
+      let findUserByEmail = query(users, where("email", "==", credentials.email), where("password", "==", credentials.password))
+      let querySnapshot = await getDocs(findUserByEmail);
+      let userInfo: any = null;
+    
+      // Check if any documents were returned
+      if (!querySnapshot.empty) {
+        querySnapshot.forEach((doc) => {
+          // Extract document data and include the document ID
+          userInfo = { id: doc.id, ...doc.data() };
+       
+        });
+      } else {
+        console.log("No user found with the provided email");
+      }
+
+
+
+        if (credentials.email === userInfo.email && credentials.password === userInfo.password) {
           return {email: credentials.email, admin: true}
         } else throw new Error("Invalid email or password");
         
@@ -59,6 +78,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session.user.admin = userInfo.admin
       }
     
+      session.user.image = userInfo.image
       
       return session;
     },
@@ -83,7 +103,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     //After user extraction set role of user to token
     token.admin = userInfo.admin
-
+    token.image = userInfo.image
+    console.log("USER token" + user)
     console.log({token})
     return token;
    }
