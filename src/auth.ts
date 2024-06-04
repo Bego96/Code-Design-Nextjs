@@ -27,7 +27,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password"},
       },
       authorize: async (credentials): Promise<any> => {
-        console.log({credentials})
+        
 
         let users = collection(db, "users")
       let findUserByEmail = query(users, where("email", "==", credentials.email), where("password", "==", credentials.password))
@@ -77,7 +77,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (userInfo.admin) {
         session.user.admin = userInfo.admin
       }
-    
+      
       session.user.image = userInfo.image
       
       return session;
@@ -104,8 +104,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     //After user extraction set role of user to token
     token.admin = userInfo.admin
     token.image = userInfo.image
-    console.log("USER token" + user)
-    console.log({token})
+
     return token;
    }
   },
