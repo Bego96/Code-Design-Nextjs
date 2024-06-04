@@ -8,7 +8,7 @@ export default function Home() {
 
   
   return (
-    <main className="">
+    <main className="bg-[#FAFAFA]">
       <Test />
     </main>
   );
