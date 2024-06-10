@@ -3,14 +3,23 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { storage } from '@/app/firebaseConfig';
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable, UploadTaskSnapshot } from 'firebase/storage';
+import Image from 'next/image';
 
+interface ImageRef {
+  fileRef: File,
+  imgSrc: string
+}
 export default function Form() {
   const router = useRouter();
-  const [image, setImage] = useState<File>();
+  const [image, setImage] = useState<ImageRef>();
   const [imageSrc, setImageSrc] = useState<string>();
   const handleImgUpload = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setImage(e.target.files[0]);
+      const imgObj = {
+        fileRef: e.target.files[0],
+        imgSrc: URL.createObjectURL(e.target.files[0])
+      }
+      setImage(imgObj);
     }
    
   }
@@ -19,9 +28,9 @@ export default function Form() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    if (image) {
-      const storageRef = ref(storage, `images/${image.name}`);
-      await uploadBytes(storageRef, image);
+    if (image?.fileRef) {
+      const storageRef = ref(storage, `images/${image?.fileRef.name}`);
+      await uploadBytes(storageRef, image?.fileRef);
 
       const imageUrl = await getDownloadURL(storageRef);
       
@@ -47,19 +56,32 @@ export default function Form() {
   
 
   return (
-    <div>
-    <form onSubmit={onSubmit} className='flex flex-col w-1/3'>
-      <input type="file" name="image" onChange={handleImgUpload} className='mb-2' />
-      <input type="text" name="first_name" placeholder='First name' className='h-12 mb-2 text-black' />
-      <input type="text" name="last_name" placeholder='Last name' className='h-12 mb-2 text-black' />
-      <input type="email" name="email" placeholder='Email' className='h-12 mb-2 text-black' />
-      <input type="password" name="password" placeholder='Password' className='h-12 text-black' />
-      <button type='submit' className='h-12 bg-blue-500 text-white'>Submit</button>
-    </form>
-    {
-      imageSrc && <img src={imageSrc} />
-    }
-    
+    <div className='p-10 flex justify-center items-center flex-col m-auto'>
+      <div className='w-1/3 text-center drop-shadow-lg bg-[#FAFAFA] flex flex-col p-8'>
+      <div className='w-1/4 mx-auto mb-10'>
+          <Image className='w-full' src={`https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/logo%2Fcode-design-logo.jpg?alt=media&token=a58dd669-680a-425c-b7bc-5bb70fb05ffd`} height={500} width={500} alt="Code Design logo"/>
+        </div>
+        <div className=''>
+          <h3 className='text-2xl font-semibold'>CODE Design</h3>
+          <p className='text-xl'>Arhitektonski biro</p>
+        </div>
+        <h2 className='text-4xl font-semibold mb-8 mt-12'>PRIJAVI SE</h2>
+        {
+          image && 
+          <div className='w-40'>
+            <Image className='w-full' src={image?.imgSrc} height={500} width={500} alt="Uploaded image"/>
+          </div>
+        }
+        <form onSubmit={onSubmit} className='flex flex-col mt-4'>
+          <input type="file" name="image" onChange={handleImgUpload} className='mb-12' />
+          <input type="text" name="first_name" placeholder='First name' className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 mb-8' />
+          <input type="text" name="last_name" placeholder='Last name' className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 mb-8' />
+          <input type="email" name="email" placeholder='Email' className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 mb-8' />
+          <input type="password" name="password" placeholder='Password' className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 mb-8' />
+          <button type='submit' className='bg-[#222222] text-[#FAFAFA] h-[48px]'>Submit</button>
+        </form>
+      </div>
     </div>
+    
   )
 }

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db, auth } from '../firebaseConfig';
 import { signInWithCustomToken } from 'firebase/auth';
-
+import Image from 'next/image';
 
 // https://stackoverflow.com/questions/75963110/firebase-rules-to-fix-missing-or-insufficient-permissions-error-when-accessing
 
@@ -90,19 +90,37 @@ export default function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email
-        <input name="email" type="email" required />
-      </label>
-      <label>
-        Password
-        <input name="password" type="password" required />
-      </label>
-      <button type="submit">Sign In</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <p>No account?</p>
-      <Button />
-    </form>
+    <div className='flex justify-center items-center flex-col m-auto h-screen'>
+      <div className='w-1/3 text-center drop-shadow-lg bg-[#FAFAFA] flex flex-col p-8'>
+        <div className='w-1/4 mx-auto mb-10'>
+          <Image className='w-full' src={`https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/logo%2Fcode-design-logo.jpg?alt=media&token=a58dd669-680a-425c-b7bc-5bb70fb05ffd`} height={500} width={500} alt="Code Design logo"/>
+        </div>
+        <div className=''>
+          <h3 className='text-2xl font-semibold'>CODE Design</h3>
+          <p className='text-xl'>Arhitektonski biro</p>
+        </div>
+        <h2 className='text-4xl font-semibold mb-8 mt-12'>PRIJAVI SE</h2>
+        <form onSubmit={handleSubmit} className='flex flex-col'>
+          
+            <input name="email" type="email" placeholder='Email adresa' required className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 mb-8'/>
+        
+            <input name="password" type="password" placeholder='Lozinka' required className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4'/>
+          <div className='flex justify-end text-[#495057]'>
+            <p>Zaboravili ste lozinku?</p>
+          </div>
+          <div className='flex flex-start mb-6'>
+            <input type="checkbox" id="remember" className='accent-[#495057] mr-2'/>
+            <label htmlFor="remember">Zapamti me</label>
+          </div>
+          
+          <button type="submit" className='bg-[#222222] text-[#FAFAFA] h-[48px]'>Prijavi se</button>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          
+        </form>
+        <div className='mt-6'>
+          <Button />
+        </div>
+      </div>
+    </div>
   );
 }

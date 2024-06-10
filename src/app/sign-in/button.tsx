@@ -4,6 +4,6 @@ import { useRouter } from 'next/navigation'
 export default function Button() {
     const router = useRouter();
   return (
-    <button type="button" onClick={() => router.push('/sign-up')}>Sign Up</button>
+    <button type="button" className='text-red-500' onClick={() => router.push('/sign-up')}>Nemate račun?</button>
   )
 }
