@@ -8,6 +8,7 @@ declare module "next-auth" {
   interface User {
     
     admin: boolean | null;
+    lastName: string | null;
   }
 }
 
@@ -15,6 +16,7 @@ declare module "@auth/core/adapters" {
   interface AdapterUser {
    
     admin: boolean | null;
+    lastName: string | null;
   }
 }
 
@@ -79,7 +81,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       
       session.user.image = userInfo.image
-      
+      session.user.name = userInfo.first_name
+      session.user.lastName = userInfo.last_name
+
       return session;
     },
    async jwt({ token, user}) {
@@ -104,7 +108,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     //After user extraction set role of user to token
     token.admin = userInfo.admin
     token.image = userInfo.image
-
+    token.name = userInfo.first_name
+    token.lastName = userInfo.last_name
     return token;
    }
   },

@@ -1,7 +1,9 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css"
-import DashboardNav from "./dashboard-components/dashboardNav";
+import {DashboardNav} from "./dashboard-components/dashboardNav";
+import { DashboardSidebar } from "./dashboard-components/dashboardSidebar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,8 +20,9 @@ export default function DashboardLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#FAFAFA] px-4 xl:px-14 2xl:px-32 py-4">
+      <body className="relative bg-[#FAFAFA] px-4 xl:px-14 2xl:px-32 py-4">
        <DashboardNav />
+       <DashboardSidebar />
       {children}</body>
     </html>
   );
