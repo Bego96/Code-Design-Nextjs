@@ -21,7 +21,7 @@ const openSidebar = useDashboardStore((state) => state.toggleSidebar)
                 </div>
                 <h2 className='text-xl lg:pr-20'>CODE Design</h2>
             </div>
-            <Link href="/projekti">
+            <Link href="/dashboard/projects">
                 <button className='hidden lg:flex drop-shadow-xl px-16 py-4 bg-white'>
                     Projekti
                 </button>
