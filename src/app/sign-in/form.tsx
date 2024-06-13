@@ -9,6 +9,7 @@ import { db, auth } from '../firebaseConfig';
 import { signInWithCustomToken } from 'firebase/auth';
 import Image from 'next/image';
 
+
 // https://stackoverflow.com/questions/75963110/firebase-rules-to-fix-missing-or-insufficient-permissions-error-when-accessing
 
 // Test function for creating Firebase custom token
