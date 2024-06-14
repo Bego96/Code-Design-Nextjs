@@ -1,9 +1,35 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function ProjectArticle() {
+
+  const [checkbox, setCheckbox] = useState(false);
+  const [isCheckActive, setIsCheckActive] = useState(false);
+
+  const setActiveChecks = (e: any) => {
+    if (e.target.checked) {
+      console.log("Checkbox is checked")
+      setIsCheckActive(true)
+    } else {
+      console.log("Checkbox is unchecked")
+      setIsCheckActive(false)
+    }
+  }
+
+  // When ever user checks the project, project's ID will be pushed to array which will be used for deleting projects in database
+  // In loop we will use database function to delete each project with corresponding ID
+
+  console.log("Active hover" +checkbox)
+  console.log("Active when checked" + isCheckActive)
   return (
-    <div className='relative overflow-hidden w-full md:w-[30%] h-[350px] lg:h-[450px] mb-12'>
+    <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full md:w-[30%] h-[350px] lg:h-[450px] mb-12'>
+      <input 
+      id="checkProject"
+        type="checkbox" 
+        onChange={setActiveChecks}
+        className={`${checkbox || isCheckActive ? 'block': 'hidden'} z-10 cursor-pointer absolute right-2 top-2 w-6 h-6 border border-gray-300 rounded`}
+      />
       <div className='relative w-full h-full'>
         <Image
           className="object-cover"
