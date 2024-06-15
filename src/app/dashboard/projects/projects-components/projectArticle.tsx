@@ -2,7 +2,8 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 
-export default function ProjectArticle() {
+export default function ProjectArticle({pushSelectedProjects, id}:any) {
+
 
   const [checkbox, setCheckbox] = useState(false);
   const [isCheckActive, setIsCheckActive] = useState(false);
@@ -11,6 +12,7 @@ export default function ProjectArticle() {
     if (e.target.checked) {
       console.log("Checkbox is checked")
       setIsCheckActive(true)
+      pushSelectedProjects(id)
     } else {
       console.log("Checkbox is unchecked")
       setIsCheckActive(false)
