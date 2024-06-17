@@ -13,6 +13,7 @@ import { toast, Toaster, ToastBar } from 'react-hot-toast';
 import { duration } from '@mui/material';
 import { AiOutlineClose } from "react-icons/ai";
 import zIndex from '@mui/material/styles/zIndex';
+import Link from 'next/link';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -79,7 +80,7 @@ console.log(selectedProjectsList)
             <h2 className='text-3xl text-[#495057] mb-4'>OBJAVLJENI PROJEKTI</h2>
             <div className='flex flex-col xsm:flex-row'>
                 <button onClick={handleOpen} className='flex items-center bg-[#6D89C7] px-6 py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white'><FaRegTrashAlt className='mr-2'/>Obriši projekat</button>
-                <button className='flex items-center bg-[#222222] px-6 py-2 text-white'><VscAdd className='mr-2'/>Dodaj projekat</button>
+                <Link href="/dashboard/projects/upload"><button className='flex items-center bg-[#222222] px-6 py-2 text-white'><VscAdd className='mr-2'/>Dodaj projekat</button></Link>
             </div>
         </div>
         <div>
