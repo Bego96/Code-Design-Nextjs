@@ -13,12 +13,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import Link from 'next/link';
 import { LuImagePlus } from "react-icons/lu";
 import Image from 'next/image';
-import { UploadTaskSnapshot, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { storage } from '@/app/firebaseConfig';
+import { UploadTaskSnapshot, deleteObject, getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { db, storage } from '@/app/firebaseConfig';
+import { IoCloseSharp } from "react-icons/io5";
 
 interface ImageRef {
   id: number,
-  imageSource: string
+  imageSource: string,
+  imageFileRef: File
 }
 
 const style = {
@@ -41,6 +43,7 @@ export default function UploadProjects() {
   const [imageSrc, setImageSrc] = useState<ImageRef[]>([]);
   const [progressUpload, setProgressUpload] = useState<number>(0);
 
+
   const addImages = () => {
     // Add image to the project
   }
@@ -51,11 +54,12 @@ export default function UploadProjects() {
         fileRef: e.target.files[0],
         imgSrc: URL.createObjectURL(e.target.files[0])
       };
+      
 
       if (imgObj?.fileRef) {
         const storageRef = ref(storage, `images/${imgObj?.fileRef.name}`);
         const uploadTask = uploadBytesResumable(storageRef, imgObj.fileRef);
-
+        console.log("IMG SOURCE FROM IMG OBJECT " + JSON.stringify(imgObj.fileRef.name))
         uploadTask.on(
           "state_changed",
           (snapshot: UploadTaskSnapshot) => {
@@ -74,7 +78,8 @@ export default function UploadProjects() {
 
             const imageObject = {
               id: id,
-              imageSource: imageUrl
+              imageSource: imageUrl,
+              imageFileRef: imgObj.fileRef
             };
 
             setImageSrc(prevList => [...prevList, imageObject]);
@@ -91,6 +96,27 @@ export default function UploadProjects() {
 
   console.log(imageSrc);
   console.log(progressUpload);
+
+  const deleteImage = async (imgName: File) => {
+    for (let i = 0; i < imageSrc.length; i++) {
+      if (imageSrc[i].imageFileRef === imgName) {
+        const storage = getStorage();
+        console.log(imgName)
+        const desertRef = ref(storage, `images/${imgName.name}`);
+
+        deleteObject(desertRef).then(() => {
+          console.log("Image removed successfuly")
+        }).catch((error) => {
+          console.log("Error occured deleting image!")
+        });
+
+        const newArray = imageSrc.filter((item) => item !== imageSrc[i]);
+        setImageSrc(newArray);
+      }
+    }
+  }
+
+  console.log(imageSrc[0]?.imageSource)
 
   return (
     <div className='mt-20'>
@@ -173,13 +199,16 @@ export default function UploadProjects() {
           <div className='flex flex-wrap'>
             {imageSrc.length > 0 && (
               imageSrc.map((image) => (
-                <div key={image.id} className={`w-[150px] h-[150px] ${image.id === 1 ? 'ml-0' : 'ml-4'}`}>
+                <div key={image.id}  className={`relative w-[200px] h-[200px] ${image.id === 1 ? 'ml-0' : 'ml-4'}`} onClick={() => deleteImage(image.imageFileRef)}>
+                <IoCloseSharp onClick={() => deleteImage(image.imageFileRef)} size={25} color='#495057' className='bg-slate-200 bg-opacity-60 cursor-pointer absolute top-2 right-2' />
+                  
+                
                   <Image className="h-full w-full object-cover" src={image.imageSource} alt="Uploaded Image" width={150} height={150} />
                 </div>
               ))
             )}
           </div>
-          <div onClick={handleOpen} className={`${imageSrc.length === 0 ? 'ml-0' : 'ml-4'} cursor-pointer border-dashed inline-block flex flex-col justify-center items-center w-[150px] h-[150px] border-[#495057] border-2`}>
+          <div onClick={handleOpen} className={`${imageSrc.length === 0 ? 'ml-0' : 'ml-4'} cursor-pointer border-dashed inline-block flex flex-col justify-center items-center w-[200px] h-[200px] border-[#495057] border-2`}>
             <LuImagePlus size={30} className='mx-auto mb-4' color='#495057'/>
             <p className='text-[#495057]'>Dodaj sliku</p>
           </div>
