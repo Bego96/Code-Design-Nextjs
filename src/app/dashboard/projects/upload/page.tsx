@@ -17,7 +17,7 @@ import { UploadTaskSnapshot, deleteObject, getDownloadURL, getStorage, ref, uplo
 import { db, storage } from '@/app/firebaseConfig';
 import { IoCloseSharp } from "react-icons/io5";
 import { styled } from '@mui/material/styles';
-import { OutlinedInput, makeStyles } from '@mui/material';
+import { addDoc, collection } from 'firebase/firestore';
 
 interface ImageRef {
   id: number,
@@ -52,6 +52,18 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
+interface Images {
+  imageSource: string,
+  imageName: string
+}
+
+interface Project {
+  projectName: string,
+  projectLocation: string,
+  projectDate: Date,
+  projectImages: Images[]
+}
+
 export default function UploadProjects() {
   const notify = (message: string) => toast(message);
   const [open, setOpen] = useState(false);
@@ -63,7 +75,7 @@ export default function UploadProjects() {
 
   const [projectName, setProjectName] = useState<string>('');
   const [projectLocation, setProjectLocation] = useState<string>('');
-  const [projectDate, setProjectDate] = useState<Date>();
+  const [projectDate, setProjectDate] = useState<Date>(new Date());
 
   
   const handleClose = () => {
@@ -76,11 +88,11 @@ export default function UploadProjects() {
 
   const addImages = () => {
     // Add image to the project
-    if (image) {
+    if (image && progressUpload === 100) {
       setImageSrc(prevList => [...prevList, image]);
       setProgressUpload(0);
     } else {
-      notify('Please upload image!')
+      notify('Image not uploaded yet!')
     }
     
   }
@@ -97,7 +109,7 @@ export default function UploadProjects() {
       if (imgObj?.fileRef) {
         const storageRef = ref(storage, `images/${imgObj?.fileRef.name}`);
         const uploadTask = uploadBytesResumable(storageRef, imgObj.fileRef);
-        console.log("IMG SOURCE FROM IMG OBJECT " + JSON.stringify(imgObj.fileRef.name))
+       
         uploadTask.on(
           "state_changed",
           (snapshot: UploadTaskSnapshot) => {
@@ -133,23 +145,36 @@ export default function UploadProjects() {
   const uploadProject = (event: FormEvent<HTMLFormElement>) => {
     // Function to handle project upload
     event.preventDefault();
-    const projectInfo = {
+
+    const filterImageSources = imageSrc.map(({ imageSource, imageName }) => ({ imageSource, imageName }));
+
+    const projectInfo: Project = {
       projectName: projectName,
       projectLocation: projectLocation,
-      projectDate: projectDate,
-      projectImages: imageSrc
-    }
+      projectDate: projectDate, // Ensure this is always a Date object
+      projectImages: filterImageSources
+    };
+    
+    const addProjectToDb = async () => {
+      try {
+        const addToDb = await addDoc(collection(db, "projects"), projectInfo).then(res => console.log("RESPONSE" + res));
+        // Assuming addDoc returns an object with an id property
+        
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    };
 
-    console.log("PROJECT INFO " + JSON.stringify(projectInfo))
+    const res = addProjectToDb();
+    //console.log("PROJECT INFO " + JSON.stringify(projectInfo))
   }
 
-  console.log(image?.imageFileRef);
-  console.log(progressUpload);
+  
 
   const deleteUploadedImg = async (imgName: File) => {
     if (image) {
       const storage = getStorage();
-        console.log(imgName)
+       
         const desertRef = ref(storage, `images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
@@ -165,11 +190,9 @@ export default function UploadProjects() {
   }
 
   const deleteImage = async (imgName: File) => {
-    console.log("IM CLICKED")
     for (let i = 0; i < imageSrc.length; i++) {
       if (imageSrc[i].imageFileRef === imgName) {
         const storage = getStorage();
-        console.log(imgName)
         const desertRef = ref(storage, `images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
@@ -185,7 +208,6 @@ export default function UploadProjects() {
     }
   }
 
-  console.log(imageSrc[0]?.imageSource)
   
   return (
     <div className='mt-20'>
@@ -291,7 +313,7 @@ export default function UploadProjects() {
           <div className='flex flex-wrap'>
             {imageSrc.length > 0 && (
               imageSrc.map((image) => (
-                <div key={image.id}  className={`relative w-[200px] h-[200px] ${image.id === 1 ? 'ml-0' : 'ml-4'}`}>
+                <div key={image.id}  className={`relative w-[200px] h-[200px] ${imageSrc.length === 1 ? 'ml-0' : 'ml-4'}`}>
                 <IoCloseSharp onClick={() => deleteImage(image.imageFileRef)} size={25} color='#495057' className='bg-slate-200 bg-opacity-60 cursor-pointer absolute top-2 right-2' />
                   
                 
