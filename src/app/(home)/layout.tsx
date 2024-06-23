@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
-import { Navigation } from "../components/navigation/navigation";
+import { HomeNav } from "./components/homeNav/homeNav";
+import { HomeSidebar } from "./components/homeNav/homeSidebar";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#FAFAFA]">
-        <Navigation />
+      <body className="relative bg-[#FAFAFA] px-4 xl:px-14 2xl:px-32 py-4">
+        <HomeSidebar />
+       <HomeNav />
+      
       {children}</body>
     </html>
   );
