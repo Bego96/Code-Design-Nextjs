@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative bg-[#FAFAFA] px-4 xl:px-14 2xl:px-32 py-4">
+      <body className="relative bg-[#FAFAFA]">
         <HomeSidebar />
        <HomeNav />
       

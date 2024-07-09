@@ -10,7 +10,7 @@ export default function HomeNavMain({user}:any) {
 
     const openSidebar = useHomeStore((state) => state.toggleSidebar)
   return (
-    <nav className='flex 2xl:flex-row justify-between items-center'>
+    <nav className='px-4 xl:px-14 2xl:px-32 py-6 flex 2xl:flex-row justify-between items-center mt-4'>
         <div className='flex items-center'>
             <div className='flex justify-center items-center lg:mr-24 lg:border-r-[1px] border-slate-400'>
                 <div className='w-14 mr-4'>
