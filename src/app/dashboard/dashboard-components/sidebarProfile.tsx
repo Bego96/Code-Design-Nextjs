@@ -1,25 +1,36 @@
 
+'use client'
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { auth } from '@/auth';
+import { useRouter } from 'next/navigation';
 
 export default function SidebarProfile({user}: any) {
   
-  console.log(user)
-  return (
-    <div className='flex items-center cursor-pointer'>
-      <div className='w-14 h-14 overflow-hidden rounded-full grow-0 shrink-0 mr-4'>
-        <Image
-          className='w-full h-auto object-center'
-          alt="profile picture"
-          src={user?.image}
-          height={500}
-          width={500}
-        />
-      </div>
+  const router = useRouter();
+  if (!user) {
+    return (
       <div>
-        <p>{user.name + ' ' + user.lastName} </p>
-      </div>
+      <button
+
+        onClick={() => router.push("/sign-in")}
+        className="bg-indigo-700 p-2 rounded-md"
+      >
+        Sign In 
+      </button>
     </div>
-  );
+    )
+  } else {
+    return (
+      <div className='hidden lg:flex items-center cursor-pointer'>
+        <div className='w-14 h-14 overflow-hidden rounded-full grow-0 shrink-0 mr-4'>
+          <Image className='w-full h-auto object-center' alt="profile picture" src={user?.image} height={500} width={500}/>
+        </div>
+        <div>
+          {
+            user && <div><p>{user.name + ' ' + user.lastName}</p></div>
+          }
+        </div>
+      </div>
+    )
+  }
 }
