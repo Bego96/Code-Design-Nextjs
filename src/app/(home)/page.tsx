@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { auth } from "@/auth";
-import { signOut } from "@/auth";
+
 import Header from "./components/header/header";
 import Brands from "./components/brands/brands";
 import AboutUs from "./components/aboutUs/aboutUs";
+import Services from "./components/services/services";
 
 
 export default function Home() {
@@ -14,6 +13,7 @@ export default function Home() {
       <Header />
       <Brands />
       <AboutUs />
+      <Services />
     </div>
   );
 }
