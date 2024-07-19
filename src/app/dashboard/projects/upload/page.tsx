@@ -60,8 +60,9 @@ interface Images {
 interface Project {
   projectName: string,
   projectLocation: string,
-  projectDate: Date,
-  projectImages: Images[]
+  projectDate: string,
+  projectImages: Images[],
+  projectUploadDate: Date
 }
 
 export default function UploadProjects() {
@@ -75,7 +76,7 @@ export default function UploadProjects() {
 
   const [projectName, setProjectName] = useState<string>('');
   const [projectLocation, setProjectLocation] = useState<string>('');
-  const [projectDate, setProjectDate] = useState<Date>(new Date());
+  const [projectDate, setProjectDate] = useState<string>('');
 
   
   const handleClose = () => {
@@ -147,12 +148,17 @@ export default function UploadProjects() {
     event.preventDefault();
 
     const filterImageSources = imageSrc.map(({ imageSource, imageName }) => ({ imageSource, imageName }));
+    const uploadedDate = new Date(); 
+    // Convert both dates to their respective timestamps for comparison
+
+    console.log(uploadedDate)
 
     const projectInfo: Project = {
       projectName: projectName,
       projectLocation: projectLocation,
-      projectDate: projectDate, // Ensure this is always a Date object
-      projectImages: filterImageSources
+      projectDate: projectDate,
+      projectImages: filterImageSources,
+      projectUploadDate: uploadedDate
     };
     
     const addProjectToDb = async () => {
@@ -301,7 +307,7 @@ export default function UploadProjects() {
           <input type="text" placeholder='Naziv' value={projectName} onChange={(e) => setProjectName(e.target.value)} className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full'/>
           <div className='flex flex-col sm:flex-row mt-4'>
             <input type="text" placeholder='Lokacija' value={projectLocation} onChange={(e) => setProjectLocation(e.target.value)} className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full sm:w-[70%] mr-auto' />
-            <input type="date" placeholder="Datum" onChange={(e) => setProjectDate(new Date(e.target.value))} className='mt-4 sm:mt-0 border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full sm:w-[28%]'/>
+            <input type="text" placeholder="Datum" onChange={(e) => setProjectDate(e.target.value)} className='mt-4 sm:mt-0 border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full sm:w-[28%]'/>
           </div>
         </div>
       </form>
@@ -313,7 +319,7 @@ export default function UploadProjects() {
           <div className='flex flex-wrap'>
             {imageSrc.length > 0 && (
               imageSrc.map((image) => (
-                <div key={image.id}  className={`relative w-[200px] h-[200px] ${imageSrc.length === 1 ? 'ml-0' : 'ml-4'}`}>
+                <div key={image.id}  className={`relative w-[200px] h-[200px] ${imageSrc.length === 1 ? 'ml-0 mb-0' : 'ml-4 mb-4'}`}>
                 <IoCloseSharp onClick={() => deleteImage(image.imageFileRef)} size={25} color='#495057' className='bg-slate-200 bg-opacity-60 cursor-pointer absolute top-2 right-2' />
                   
                 
