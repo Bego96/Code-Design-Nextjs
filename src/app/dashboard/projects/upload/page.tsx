@@ -90,15 +90,24 @@ export default function UploadProjects() {
   const addImages = () => {
     // Add image to the project
     if (image && progressUpload === 100) {
-      setImageSrc(prevList => [...prevList, image]);
-      setProgressUpload(0);
+     
+        toast.success('Image uploaded successfuly')
+        setImageSrc(prevList => [...prevList, image])
+        setImage(null)
+        setProgressUpload(0)
     } else {
-      notify('Image not uploaded yet!')
+      toast.error('Image not uploaded yet!')
     }
     
   }
 
   const uploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
+
+    if (image) {
+      setImage(null);
+    }
+
+    console.log(image)
     if (e.target.files && e.target.files[0]) {
       const imgObj = {
         fileRef: e.target.files[0],
@@ -106,7 +115,7 @@ export default function UploadProjects() {
         imageName: e.target.files[0].name
       };
       
-
+      
       if (imgObj?.fileRef) {
         const storageRef = ref(storage, `images/${imgObj?.fileRef.name}`);
         const uploadTask = uploadBytesResumable(storageRef, imgObj.fileRef);
@@ -123,6 +132,8 @@ export default function UploadProjects() {
           },
           async () => {
             console.log("Upload complete");
+            
+            toast.success('Uploaded successfuly!')
             const imageUrl = await getDownloadURL(storageRef);
 
             const id = imageSrc.length === 0 ? 1 : imageSrc[imageSrc.length - 1].id + 1;
@@ -134,6 +145,7 @@ export default function UploadProjects() {
               imageName: imgObj.imageName
             };
 
+            
             setImage(imageObject);
 
               // Reset progress after upload completes
@@ -147,32 +159,40 @@ export default function UploadProjects() {
     // Function to handle project upload
     event.preventDefault();
 
-    const filterImageSources = imageSrc.map(({ imageSource, imageName }) => ({ imageSource, imageName }));
-    const uploadedDate = new Date(); 
-    // Convert both dates to their respective timestamps for comparison
+    if (projectName === '' || projectLocation === '' || projectDate === '' || imageSrc.length === 0 ) {
+      notify('Missing project info!')
+    } else {
 
-    console.log(uploadedDate)
+      const filterImageSources = imageSrc.map(({ imageSource, imageName }) => ({ imageSource, imageName }));
+      const uploadedDate = new Date(); 
+      // Convert both dates to their respective timestamps for comparison
 
-    const projectInfo: Project = {
-      projectName: projectName,
-      projectLocation: projectLocation,
-      projectDate: projectDate,
-      projectImages: filterImageSources,
-      projectUploadDate: uploadedDate
-    };
+      console.log(uploadedDate)
+
+      const projectInfo: Project = {
+        projectName: projectName,
+        projectLocation: projectLocation,
+        projectDate: projectDate,
+        projectImages: filterImageSources,
+        projectUploadDate: uploadedDate
+      };
     
-    const addProjectToDb = async () => {
-      try {
-        const addToDb = await addDoc(collection(db, "projects"), projectInfo).then(res => console.log("RESPONSE" + res));
-        // Assuming addDoc returns an object with an id property
-        
-      } catch (error) {
-        console.error("Error adding document: ", error);
-      }
-    };
+      const addProjectToDb = async () => {
+        try {
+          const addToDb = await addDoc(collection(db, "projects"), projectInfo).then(res => console.log("RESPONSE" + res));
+          // Assuming addDoc returns an object with an id property
+          setProjectName('');
+          setProjectDate('');
+          setProjectLocation('');
+          setImageSrc([]);
+        } catch (error) {
+          console.error("Error adding document: ", error);
+        }
+      };
 
-    const res = addProjectToDb();
+      const res = addProjectToDb();
     //console.log("PROJECT INFO " + JSON.stringify(projectInfo))
+    }
   }
 
   
@@ -184,11 +204,11 @@ export default function UploadProjects() {
         const desertRef = ref(storage, `images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
-          console.log("Image removed successfuly")
+          toast.success('Image removed successfuly')
           setImage(null);
           setProgressUpload(0);
         }).catch((error) => {
-          console.log("Error occured deleting image!")
+          toast.error("Error occured deleting image!")
         });
 
 
@@ -202,9 +222,9 @@ export default function UploadProjects() {
         const desertRef = ref(storage, `images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
-          console.log("Image removed successfuly")
+          toast.success('Image removed successfuly')
         }).catch((error) => {
-          console.log("Error occured deleting image!")
+          toast.error("Error occured deleting image!")
         });
 
         const newArray = imageSrc.filter((item) => item !== imageSrc[i]);
@@ -297,7 +317,7 @@ export default function UploadProjects() {
         <div className='flex flex-col md:flex-row justify-between items-center md:items-start'>
           <h2 className='text-3xl text-[#495057] mb-4'>NOVI PROJEKAT</h2>
           <div className='flex flex-col xsm:flex-row'>
-            <Link href="/dashboard/projects"><button className='bg-[#4F6071] w-[200px] py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white text-center'>Odustani</button></Link>
+            <Link href="/dashboard"><button className='bg-[#4F6071] w-[200px] py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white text-center'>Odustani</button></Link>
             <button type="submit" className='bg-gray-400 w-[200px] py-2 text-white text-center'>Snimi projekat</button>
           </div>
         </div>
@@ -327,17 +347,18 @@ export default function UploadProjects() {
                 </div>
               ))
             )}
-          </div>
-          <div onClick={handleOpen} className={`${imageSrc.length === 0 ? 'ml-0' : 'ml-4'} cursor-pointer border-dashed inline-block flex flex-col justify-center items-center w-[200px] h-[200px] border-[#495057] border-2`}>
+            <div onClick={handleOpen} className={`${imageSrc.length === 0 ? 'ml-0' : 'ml-4'} cursor-pointer border-dashed inline-block flex flex-col justify-center items-center w-[200px] h-[200px] border-[#495057] border-2`}>
             <LuImagePlus size={30} className='mx-auto mb-4' color='#495057'/>
             <p className='text-[#495057]'>Dodaj sliku</p>
           </div>
+          </div>
+          
         </div>
       
       </div>
 
       {/* Toaster for notifying user about success or error in uploading */}
-      <Toaster toastOptions={{duration: 2000, style: {color: 'white', width: '500px', backgroundColor: 'rgba(255, 0, 0, 0.7)'}}}>
+      <Toaster toastOptions={{duration: 2000, style: {color: 'black', width: '500px', backgroundColor: ''}}}>
         {(t) => (
           <ToastBar toast={t}>
             {({ icon, message }) => (

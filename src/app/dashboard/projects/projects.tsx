@@ -42,6 +42,9 @@ const deleteProjects = () => {
   if (selectedProjectsList.length === 0) {
     handleClose();
     notify('You didnt select any projects')
+  } else {
+    // Loop trought uploaded images on Firebase
+    // If id from selected projects list exists then use it as delete method for Firebase
   }
 }
 
