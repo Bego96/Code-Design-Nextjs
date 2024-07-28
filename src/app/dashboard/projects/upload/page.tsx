@@ -327,7 +327,7 @@ export default function UploadProjects() {
           <input type="text" placeholder='Naziv' value={projectName} onChange={(e) => setProjectName(e.target.value)} className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full'/>
           <div className='flex flex-col sm:flex-row mt-4'>
             <input type="text" placeholder='Lokacija' value={projectLocation} onChange={(e) => setProjectLocation(e.target.value)} className='border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full sm:w-[70%] mr-auto' />
-            <input type="text" placeholder="Datum" onChange={(e) => setProjectDate(e.target.value)} className='mt-4 sm:mt-0 border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full sm:w-[28%]'/>
+            <input type="text" placeholder="Datum" onChange={(e) => setProjectDate(e.target.value)} value={projectDate} className='mt-4 sm:mt-0 border border-[#495057] h-[48px] placeholder-[#495057] pl-4 w-full sm:w-[28%]'/>
           </div>
         </div>
       </form>
