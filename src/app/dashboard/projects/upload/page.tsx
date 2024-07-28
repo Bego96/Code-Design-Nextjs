@@ -95,6 +95,7 @@ export default function UploadProjects() {
         setImageSrc(prevList => [...prevList, image])
         setImage(null)
         setProgressUpload(0)
+        setOpen(false)
     } else {
       toast.error('Image not uploaded yet!')
     }
