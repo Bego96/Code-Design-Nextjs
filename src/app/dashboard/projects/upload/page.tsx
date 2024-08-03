@@ -118,7 +118,7 @@ export default function UploadProjects() {
       
       
       if (imgObj?.fileRef) {
-        const storageRef = ref(storage, `images/${imgObj?.fileRef.name}`);
+        const storageRef = ref(storage, `project_images/${imgObj?.fileRef.name}`);
         const uploadTask = uploadBytesResumable(storageRef, imgObj.fileRef);
        
         uploadTask.on(
@@ -161,7 +161,7 @@ export default function UploadProjects() {
     event.preventDefault();
 
     if (projectName === '' || projectLocation === '' || projectDate === '' || imageSrc.length === 0 ) {
-      notify('Missing project info!')
+      notify('Molimo upišite informacije o projektu!')
     } else {
 
       const filterImageSources = imageSrc.map(({ imageSource, imageName }) => ({ imageSource, imageName }));
@@ -186,8 +186,11 @@ export default function UploadProjects() {
           setProjectDate('');
           setProjectLocation('');
           setImageSrc([]);
+
+          toast.success('Projekat uspješno snimnjen')
         } catch (error) {
           console.error("Error adding document: ", error);
+          toast.error('Greška u snimanju projekta!')
         }
       };
 
@@ -205,11 +208,11 @@ export default function UploadProjects() {
         const desertRef = ref(storage, `images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
-          toast.success('Image removed successfuly')
+          toast.success('Slika uspješno izbrisana')
           setImage(null);
           setProgressUpload(0);
         }).catch((error) => {
-          toast.error("Error occured deleting image!")
+          toast.error("Greška u brisanju slike!")
         });
 
 
@@ -223,9 +226,9 @@ export default function UploadProjects() {
         const desertRef = ref(storage, `images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
-          toast.success('Image removed successfuly')
+          toast.success('Slika uspješno izbrisana')
         }).catch((error) => {
-          toast.error("Error occured deleting image!")
+          toast.error("Greška u brisanju slike!")
         });
 
         const newArray = imageSrc.filter((item) => item !== imageSrc[i]);
