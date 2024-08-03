@@ -125,6 +125,7 @@ export default function Projects() {
   }
 
   console.log(selectedProjectsList);
+  console.log(" PROJECTS LIST " + getAllDocuments )
   return (
     <div className='mt-20'>
       <Modal
@@ -158,7 +159,7 @@ export default function Projects() {
       <div className='flex flex-col md:flex-row justify-between items-center md:items-start'>
         <h2 className='text-3xl text-[#495057] mb-4'>OBJAVLJENI PROJEKTI</h2>
         <div className='flex flex-col xsm:flex-row'>
-          <button onClick={handleOpen} className='flex items-center bg-[#6D89C7] px-6 py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white'>
+          <button disabled={getAllDocuments.length === 0} onClick={handleOpen} className={`flex items-center ${getAllDocuments.length === 0 ? 'bg-[#95b2f2]' : 'g-[#6D89C7]'} px-6 py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white`}>
             <FaRegTrashAlt className='mr-2'/>Obriši projekat
           </button>
           <Link href="/dashboard/projects/upload">
