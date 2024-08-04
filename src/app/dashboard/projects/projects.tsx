@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { VscAdd } from "react-icons/vsc";
 import ProjectList from './projects-components/projectList';
@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import { toast, Toaster, ToastBar } from 'react-hot-toast';
 import { AiOutlineClose } from "react-icons/ai";
 import Link from 'next/link';
-import { doc, deleteDoc, collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { doc, deleteDoc, collection, getDocs, query, orderBy, snapshotEqual } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
 import { useRouter } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
@@ -52,6 +52,8 @@ export default function Projects() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [selectedProjectsList, setSelectedProjectsList] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([])
+
 
   const pushSelectedProjects = (value: any) => {
     setSelectedProjectsList(prevList => [...prevList, value]);
@@ -67,7 +69,7 @@ export default function Projects() {
       const listCollection = collection(db, "projects");
       const querySnapshot = await getDocs(query(listCollection, orderBy("projectUploadDate", "desc")));
       
-      return querySnapshot.docs.map(doc => {
+      const snapShotResult =  querySnapshot.docs.map(doc => {
         const data = doc.data();
         return {
           id: doc.id,
@@ -75,11 +77,15 @@ export default function Projects() {
         } as Project;
       });
       
+      setProjects(snapShotResult)
+      return snapShotResult;
     } catch (error) {
       console.error("Error fetching documents: ", error);
       return [];
     }
   };
+
+
 
   const deleteProjects = async () => {
     if (selectedProjectsList.length === 0) {
@@ -124,8 +130,12 @@ export default function Projects() {
     }
   }
 
-  console.log(selectedProjectsList);
-  console.log(" PROJECTS LIST " + getAllDocuments )
+  useEffect(() => {
+    getAllDocuments();
+  },[])
+
+  console.log(projects)
+
   return (
     <div className='mt-20'>
       <Modal
@@ -159,7 +169,7 @@ export default function Projects() {
       <div className='flex flex-col md:flex-row justify-between items-center md:items-start'>
         <h2 className='text-3xl text-[#495057] mb-4'>OBJAVLJENI PROJEKTI</h2>
         <div className='flex flex-col xsm:flex-row'>
-          <button disabled={getAllDocuments.length === 0} onClick={handleOpen} className={`flex items-center ${getAllDocuments.length === 0 ? 'bg-[#95b2f2]' : 'g-[#6D89C7]'} px-6 py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white`}>
+          <button disabled={projects.length === 0} onClick={handleOpen} className={`flex items-center ${projects.length === 0 ? 'bg-[#95b2f2]' : 'bg-[#6D89C7] hover:bg-[#5A7ECE]'} px-6 py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white`}>
             <FaRegTrashAlt className='mr-2'/>Obriši projekat
           </button>
           <Link href="/dashboard/projects/upload">
