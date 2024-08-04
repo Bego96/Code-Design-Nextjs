@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { HomeNav } from "./components/homeNav/homeNav";
 import { HomeSidebar } from "./components/homeNav/homeSidebar";
+import Footer from "./components/footer/footer";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,9 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className="relative bg-[#FAFAFA]">
         <HomeSidebar />
-       <HomeNav />
-      
-      {children}</body>
+        <HomeNav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
