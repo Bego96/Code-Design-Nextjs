@@ -44,8 +44,8 @@ export default function NewProjects() {
           } as Project;
         });
 
-        setProjects(projectsList.slice(1, 3));
-        console.log(projectsList)
+        setProjects(projectsList.slice(0, 3));
+       
       } catch (error) {
         console.error("Error fetching documents: ", error);
       }
@@ -55,7 +55,7 @@ export default function NewProjects() {
     getAllDocuments();
     },[]);
 
-    
+    console.log(projects)
   return (
     <div className='mx-14 sm:mx-20 2xl:mx-32 mt-20 text-center'>
       {
@@ -82,7 +82,7 @@ export default function NewProjects() {
       {
         projects.length > 0 ? 
       <div className='relative w-[250px] mx-auto'>
-        <button className='drop-shadow-xl w-full py-4 bg-[#6D89C7] text-[#FAFAFA]'>
+        <button className='drop-shadow-xl w-full py-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
           Ostali projekti
         </button>
         <GoArrowUpRight size={22} color='#FAFAFA' className='absolute right-10 top-5'/>

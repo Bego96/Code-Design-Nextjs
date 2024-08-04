@@ -91,13 +91,13 @@ export default function UploadProjects() {
     // Add image to the project
     if (image && progressUpload === 100) {
      
-        toast.success('Image uploaded successfuly')
+        toast.success('Slika uspješno postavljena')
         setImageSrc(prevList => [...prevList, image])
         setImage(null)
         setProgressUpload(0)
         setOpen(false)
     } else {
-      toast.error('Image not uploaded yet!')
+      toast.error('Slika još nije postavljena!')
     }
     
   }
@@ -187,10 +187,10 @@ export default function UploadProjects() {
           setProjectLocation('');
           setImageSrc([]);
 
-          toast.success('Projekat uspješno snimnjen')
+          toast.success('Projekat uspješno sačuvan')
         } catch (error) {
           console.error("Error adding document: ", error);
-          toast.error('Greška u snimanju projekta!')
+          toast.error('Greška u sačuvanju projekta!')
         }
       };
 
