@@ -39,8 +39,8 @@ export default function Footer() {
                     <MdEmail size={24}/>
                     <span>info@code-design.ba</span></li>
                 <li className='flex mb-6 gap-4'>
-                    <FaLinkedin size={24}/>
-                    <FaFacebookSquare size={24}/>
+                    <a href='https://linkedin.com/company/codedesigndoo/?originalSubdomain=ba' target="_blank"><FaLinkedin size={24}/></a>
+                    <a href='https://www.facebook.com/code.design.tuzla' target="_blank"><FaFacebookSquare size={24}/></a>
                 </li>
             </ul>
         </div>
