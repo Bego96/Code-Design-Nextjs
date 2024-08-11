@@ -164,7 +164,7 @@ export default function UploadProjects() {
       notify('Molimo upišite informacije o projektu!')
     } else {
 
-      const filterImageSources = imageSrc.map(({ imageSource, imageName }) => ({ imageSource, imageName }));
+      const filterImageSources = imageSrc.map(({ id, imageSource, imageName }) => ({ id, imageSource, imageName }));
       const uploadedDate = new Date(); 
       // Convert both dates to their respective timestamps for comparison
 
