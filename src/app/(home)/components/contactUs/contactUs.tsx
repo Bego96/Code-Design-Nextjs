@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { MdOutlineTitle } from "react-icons/md";
 export default function ContactUs() {
   return (
-    <div className='p-8 bg-[#516795]  gap-8 flex flex-col md:justify-between lg:flex-row mx-14 sm:mx-20 2xl:mx-32 mt-20'>
+    <div id="contact" className='p-8 bg-[#516795]  gap-8 flex flex-col md:justify-between lg:flex-row mx-14 sm:mx-20 2xl:mx-32 mt-20'>
         <div className='w-full lg:w-1/2'>
             <h3 className='text-3xl text-[#FAFAFA] font-semibold'>KONTAKRIJATE NAS</h3>
             <form className='w-full'>

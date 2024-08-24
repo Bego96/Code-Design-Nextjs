@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-export default function HomeSidebarProfile({ user }: any) {
+export default function NavProfile({ user }: any) {
   const router = useRouter();
   if (user) {
     return (
@@ -27,7 +27,7 @@ export default function HomeSidebarProfile({ user }: any) {
       <button
 
         onClick={() => router.push("/sign-in")}
-        className="bg-indigo-700 p-2 rounded-md"
+        className="bg-slate-700 p-2 rounded-md"
       >
         Sign In 
       </button>

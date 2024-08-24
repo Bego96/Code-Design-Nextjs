@@ -304,7 +304,6 @@ export default function UploadProjects() {
                   <div className='h-2 bg-gray-300'>
                     <div className='h-full bg-blue-600' style={{ width: `${progressUpload}%` }}></div>
                   </div>
-                  <p className='text-center'>{progressUpload.toFixed(2)}%</p>
                 </div>
               )}
               <div className="flex justify-between mt-10">

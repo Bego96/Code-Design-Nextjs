@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Services() {
   return (
-    <div className='mx-14 sm:mx-20 2xl:mx-32 mt-20 text-center'>
+    <div id="services" className='mx-14 sm:mx-20 2xl:mx-32 mt-20 text-center'>
         <h2 className='text-4xl font-bold text-[#677582] mb-20'>USLUGE</h2>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10'>
             <div className='flex flex-col items-center drop-shadow-2xl bg-[#FAFAFA] p-4 xsm:p-10 md:p-8'>
