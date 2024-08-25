@@ -31,7 +31,7 @@ export default function ContactUs() {
                     </textarea>
                 </div>
                 <div>
-                    <button type='submit' className='bg-[#222222] hover:bg-black text-[#FAFAFA] w-full h-[50px]'>Pošalji poruku</button>
+                    <button type='submit' className='bg-[#222222] hover:bg-slate-600 text-[#FAFAFA] w-full h-[50px]'>Pošalji poruku</button>
                 </div>
             </form>
         </div>

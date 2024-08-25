@@ -16,7 +16,7 @@ export default function HomeNavMain({user}:any) {
   return (
     <nav className='px-4 xl:px-14 2xl:px-32 py-6 flex 2xl:flex-row justify-between items-center mt-4'>
         <div className='flex items-center'>
-            <Link href={`${user ? '/dashboard' : '/sign-in'}`}>
+            <Link href={`${user && user.admin === true ? '/dashboard' : '/sign-in'}`}>
                 <div className='flex justify-center items-center lg:mr-8 lg:border-r-[1px] border-slate-400'>
                     <div className='w-14 mr-4'>
                         <Image className='w-full' alt="logo" src="https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/logo%2Fcode-design-logo.jpg?alt=media&token=a58dd669-680a-425c-b7bc-5bb70fb05ffd" height={500} width={500}/>
@@ -45,7 +45,7 @@ export default function HomeNavMain({user}:any) {
             </Link>
         </div>
         <Link href="/#contact" scroll={true}>
-            <button onClick={() => scrollTo('contact')} className='bg-slate-800 hidden lg:flex hover:bg-slate-900 text-[#FAFAFA] px-16 py-4 bg-white'>
+            <button onClick={() => scrollTo('contact')} className='bg-[#222222] hidden lg:flex hover:bg-slate-600 text-[#FAFAFA] px-16 py-4'>
                 Kontakt
             </button>
         </Link>

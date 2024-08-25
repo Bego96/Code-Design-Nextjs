@@ -89,10 +89,10 @@ export default function Project({ id }: Props) {
     
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div className='w-[70%] mx-auto text-2xl font-bold text-[#677582] text-center '><p>Loading...</p></div>;
+  if (error) return <div className='w-[70%] mx-auto text-2xl font-bold text-[#677582] text-center '><p>{error}</p></div>;
 
-  if (!project) return <div>No project data</div>;
+  if (!project) return <div className='w-[70%] mx-auto text-2xl font-bold text-[#677582] text-center '><p>No project data</p></div>;
 
 
   return (
