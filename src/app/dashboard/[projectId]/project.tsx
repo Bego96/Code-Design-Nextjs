@@ -67,6 +67,7 @@ export default function Project({ id }: Props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -96,7 +97,7 @@ export default function Project({ id }: Props) {
 
 
   return (
-    <div className='w-[70%] mt-20 mx-auto'>
+    <div className='w-[70%] my-20 mx-auto'>
       <h2 className='text-2xl font-bold text-[#677582] text-center mb-20'>PREGLED PROJEKTA</h2>
       
         <div className=' mb-12'>
@@ -104,24 +105,24 @@ export default function Project({ id }: Props) {
           <p className='text-[#495057] font-light'>{project.projectLocation + " " + project.projectDate}</p>
         </div>
         <Swiper
-          modules={[Navigation, Pagination, A11y]}
-          spaceBetween={0}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
-          
-          className='swiper-container'
-        >
-          {project.projectImages.map((image) => (
-            <SwiperSlide key={image.id} className='w-full'>
-              
-                <Image height={800} width={1800} alt={image.imageName} src={image.imageSource} />
-              
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={1}
+      slidesPerView={1}
+      navigation
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+     className='swiper-container'
+    >
+      {project.projectImages.map((image) => (
+          <SwiperSlide key={image.id}>
+            <div className='h-full cursor-pointer'>
+              <Image alt={image.imageName} className='w-auto max-h-[700px] mx-auto' src={image.imageSource} height={1000} width={1000}/>
+            </div>
+          </SwiperSlide>
+        ))}
+    
+    </Swiper>
       </div>
     
   );
