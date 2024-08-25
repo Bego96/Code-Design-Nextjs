@@ -5,6 +5,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import Project from './project';
 import { GoArrowUpRight } from "react-icons/go";
+import Link from 'next/link';
 
 
 interface ImageRef {
@@ -82,9 +83,11 @@ export default function NewProjects() {
       {
         projects.length > 0 ? 
       <div className='relative w-[250px] mx-auto'>
-        <button className='drop-shadow-xl w-full py-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
-          Ostali projekti
-        </button>
+        <Link href='/projects'>
+          <button className='drop-shadow-xl w-full py-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
+            Ostali projekti
+          </button>
+        </Link>
         <GoArrowUpRight size={22} color='#FAFAFA' className='absolute right-10 top-5'/>
       </div> : null
       }

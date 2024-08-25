@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.swiper-wrapper {
-    display: flex;
-    align-items: center;
-}

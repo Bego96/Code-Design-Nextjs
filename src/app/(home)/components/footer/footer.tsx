@@ -5,7 +5,14 @@ import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
+import Link from 'next/link';
 export default function Footer() {
+
+    const scrollTo = (route: any) => {
+        const element = document.getElementById(`${route}`);
+        if (element) element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+      }
+
   return (
     <footer className='bg-[#516795] text-[#FAFAFA] gap-10 py-20 grid grid-cols-1 lg:grid-cols-5 content-center px-14 sm:px-20 2xl:px-32 mt-20'>
         <div className='flex flex-col justify-center'>
@@ -20,10 +27,10 @@ export default function Footer() {
         <div className='mx-auto hidden lg:block h-26 block w-[1px] bg-[#FAFAFA]'></div>
         <div>
             <ul>
-                <li className='mb-6'>Početna</li>
-                <li className='mb-6'>O nama</li>
-                <li className='mb-6'>Usluge</li>
-                <li className='mb-6'>Projekti</li>
+                <Link href="/"><li className='mb-6'>Početna</li></Link>
+                <Link href="/about-us"><li className='mb-6'>O nama</li></Link>
+                <Link href="/#services" scroll={true}><li className='mb-6'>Usluge</li></Link>
+                <Link href="/projects"><li className='mb-6'>Projekti</li></Link>
             </ul>
         </div>
         <div>
