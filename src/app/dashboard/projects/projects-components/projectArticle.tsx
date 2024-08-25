@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link';
 import React, { useState } from 'react'
 
 export default function ProjectArticle({pushSelectedProjects, id, projectName, projectDate, projectImages, projectLocation, removeSelectedProjects}:any) {
@@ -25,25 +26,30 @@ export default function ProjectArticle({pushSelectedProjects, id, projectName, p
   // When ever user checks the project, project's ID will be pushed to array which will be used for deleting projects in database
   // In loop we will use database function to delete each project with corresponding ID
   return (
-    <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full md:w-[30%] h-[350px] lg:h-[450px] mb-12'>
-      <input 
-      id="checkProject"
-        type="checkbox" 
-        onChange={setActiveChecks}
-        className={`${checkbox || isCheckActive ? 'block': 'hidden'} z-10 cursor-pointer absolute right-2 top-2 w-6 h-6 border border-gray-300 rounded`}
-      />
-      <div className='relative w-full h-full'>
-        <Image
-          className="object-cover"
-          src={projectImg[0]?.imageSource}
-          alt="project"
-          layout="fill"
+    
+      <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full md:w-[30%] h-[350px] lg:h-[450px] mb-12'>
+        <Link href={`/dashboard/${id}`}>
+        <input 
+        id="checkProject"
+          type="checkbox" 
+          onChange={setActiveChecks}
+          className={`${checkbox || isCheckActive ? 'block': 'hidden'} z-10 cursor-pointer absolute right-2 top-2 w-6 h-6 border border-gray-300 rounded`}
         />
-        <div className='absolute bottom-2 left-2 bg-white bg-opacity-75 p-2 md:p-4 rounded w-[95%] md:w-[90%]'>
-          <h3 className='font-semibold'>{projectName}</h3>
-          <p>{projectDate}</p>
+        <div className='relative w-full h-full'>
+          <Image
+            className="object-cover"
+            src={projectImg[0]?.imageSource}
+            alt="project"
+            layout="fill"
+          />
+          <div className='absolute bottom-2 left-2 bg-white bg-opacity-75 p-2 md:p-4 rounded w-[95%] md:w-[90%]'>
+            <h3 className='font-semibold'>{projectName}</h3>
+            <p>{projectDate}</p>
+          </div>
         </div>
+        </Link>
       </div>
-    </div>
+    
+
   )
 }
