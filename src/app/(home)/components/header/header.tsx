@@ -17,7 +17,7 @@ export default function Header() {
                 <form className='md:flex'>
                     <div className='w-full relative'>
                     <MdEmail size={24} className='absolute left-3 top-3'/>
-                        <input type="email" className='w-full border border-[#22222] h-[48px] pl-10 outline-none' placeholder='Email adresa'/>
+                        <input type="email" className='w-full border border-[#22222] h-[48px] pl-10' placeholder='Email adresa'/>
                     </div>
                     <button type="submit" className='bg-[#222222] px-12 text-[#FAFAFA] hover:bg-black h-[48px] w-full md:w-1/3'>Pošalji</button>
                 </form>
