@@ -271,19 +271,7 @@ export default function UploadProjects() {
                       </div>
                     </div>
                     <input id="dropzone-file" onChange={uploadImage} type="file" className="hidden" />
-                    <Button
-                      component="label"
-                      role={undefined}
-                      variant="contained"
-                      tabIndex={-1}
-                      
-                     sx={{
-                      backgroundColor: '#222222'
-                     }}
-                      >
-                       Upload file
-                      <VisuallyHiddenInput type="file" />
-                    </Button>
+                    
                   </label>
                   
                 </div>

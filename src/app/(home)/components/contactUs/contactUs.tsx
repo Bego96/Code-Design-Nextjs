@@ -12,22 +12,22 @@ export default function ContactUs() {
             <form className='w-full'>
                 <div className='w-full my-8 relative'>
                     <RiContactsFill size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Ime i prezime' className='w-full py-2 pl-10 outline-none'/>
+                    <input type='text' placeholder='Ime i prezime' className='w-full py-2 pl-10 '/>
                 </div >
                 <div className='w-full my-8 relative'>
                     <FaPhone size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Telefon' className='w-full py-2 pl-10 outline-none'/>
+                    <input type='text' placeholder='Telefon' className='w-full py-2 pl-10 '/>
                 </div>
                 <div className='w-full my-8 relative'>
                     <MdEmail size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Email adresa' className='w-full py-2 pl-10 outline-none'/>
+                    <input type='text' placeholder='Email adresa' className='w-full py-2 pl-10 '/>
                 </div>
                 <div className='w-full my-8 relative'>
                     <MdOutlineTitle size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Naslov' className='w-full py-2 pl-10 outline-none'/>
+                    <input type='text' placeholder='Naslov' className='w-full py-2 pl-10 '/>
                 </div>
                 <div className='w-full my-8'>
-                    <textarea rows={10} cols={20} className='w-full p-2 outline-none' placeholder='Tekst poruke'>
+                    <textarea rows={10} cols={20} className='w-full p-2 resize-none' placeholder='Tekst poruke'>
                     </textarea>
                 </div>
                 <div>
