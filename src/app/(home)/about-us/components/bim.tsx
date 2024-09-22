@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Bim() {
   return (
-    <div className='bg-[#516795] p-8 gap-8 flex flex-col md:flex-row mx-4 xl:mx-14 2xl:mx-32 mt-20'>
-        <div className='w-full md:w-1/2'>
+    <div className='bg-[#516795] p-8 gap-8 flex flex-col lg:flex-row mx-4 xl:mx-14 2xl:mx-32 mt-20'>
+        <div className='w-full lg:w-1/2'>
             <h3 className='text-[#FAFAFA] text-4xl font-bold mb-16'>BIM IZGRADNJA</h3>
             <div className='w-full mb-8'>
                 <Image className='w-full' height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F587dbe06c18483e337cfd3b5a44c1796.png?alt=media&token=8061349d-6f53-472c-bc8a-be00fe845b02'/>
@@ -13,7 +13,7 @@ export default function Bim() {
                 <Image className='w-full' height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F8a6cd76bd23214cdc6077a98084e6424.png?alt=media&token=79f5f872-db00-4622-b135-82e3dfef7802'/>
             </div>
         </div>
-        <div className='w-full md:w-1/2'>
+        <div className='w-full lg:w-1/2'>
             <div className='bg-[#FAFAFA] text-[#495057] p-8'>
                 <p className='text-xl'><span className='font-semibold'>BIM</span> je napredni sistem koji koristi <span className='font-semibold'>3D model</span> objekta kao osnovu, ali također uključuje širok spektar informacija kao što su:</p>
                 <ul className='ml-6 list-disc'>
@@ -32,7 +32,7 @@ export default function Bim() {
             </div>
             
             <div className='w-full mt-8'>
-                <Image height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F6824b57d0411573670156e181bc0a85b.png?alt=media&token=13808b41-75b5-4bdc-aba6-edb6f0ff008c' />
+                <Image className='w-full' height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F6824b57d0411573670156e181bc0a85b.png?alt=media&token=13808b41-75b5-4bdc-aba6-edb6f0ff008c' />
             </div>
         </div>
     </div>

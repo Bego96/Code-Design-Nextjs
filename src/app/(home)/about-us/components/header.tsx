@@ -37,7 +37,7 @@ export default function Header() {
                     </div>
                 </div>
         </div>
-        <div className='flex flex-col justify-center items-center md:gap-10 lg:gap-0 md:flex-row md:justify-around px-8 py-12 text-[#FAFAFA]'>
+        <div className='flex flex-col justify-center items-center md:items-start md:gap-10 lg:gap-0 md:flex-row md:justify-around px-8 py-12 text-[#FAFAFA]'>
             <div className='text-center mt-6'>
                 <h3 className='text-slate-200 text-4xl'>GODINE ISKUSTVA</h3>
                 <p className='text-6xl font-semibold mt-6'>10</p>
@@ -52,10 +52,10 @@ export default function Header() {
             </div>
         </div>
         <div className='flex flex-col lg:flex-row justify-between gap-10 p-8'>
-            <div className='w-full lg:w-1/3 xl:w-1/4 bg-[#FAFAFA] lg:h-[30%] p-8'>
+            <div className='w-full lg:w-1/3 xl:w-1/3 bg-[#FAFAFA] lg:h-[30%] p-8'>
                 <p className='text-xl text-[#495057]'>Naš mladi tim nudi efikasniji pristup arhitekturi. Vodimo klijente od ideje do realizacije koristeći savremene metode, materijale i usluge project managementa, u skladu s najnovijim trendovima.</p>
             </div>
-            <div className='w-full lg:w-2/3 xl:w-3/4'>
+            <div className='w-full lg:w-2/3 xl:w-2/3'>
                 <Image height={800} width={800} className='w-full' alt='Team image' src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2Ff9fb9be25270d42e243ed06fde5c64f5.png?alt=media&token=a838ba44-e517-4ecc-9f14-7a6d163b179e'/>
             </div>
         </div>
