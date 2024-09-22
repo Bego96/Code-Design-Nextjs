@@ -14,7 +14,7 @@ export default function Footer() {
       }
 
   return (
-    <footer className='bg-[#516795] text-[#FAFAFA] gap-10 py-20 grid grid-cols-1 lg:grid-cols-5 content-center px-14 sm:px-20 2xl:px-32 mt-20'>
+    <footer className='bg-[#516795] text-[#FAFAFA] gap-10 py-20 grid grid-cols-1 lg:grid-cols-5 content-center px-8 sm:px-20 2xl:px-32 mt-20'>
         <div className='flex flex-col justify-center'>
             <div className='flex flex-col justify-center items-center text-center'>
                     <div className='w-14 mb-4'>

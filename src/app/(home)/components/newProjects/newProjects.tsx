@@ -1,7 +1,6 @@
 'use client'
 import { db } from '@/app/firebaseConfig';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import Image from 'next/image'
+import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import Project from './project';
 import { GoArrowUpRight } from "react-icons/go";
@@ -31,7 +30,7 @@ export default function NewProjects() {
     const getAllDocuments = async () => {
       try {
         const listCollection = collection(db, "projects");
-        const querySnapshot = await getDocs(query(listCollection, orderBy("projectUploadDate", "desc")));
+        const querySnapshot = await getDocs(query(listCollection, orderBy("projectUploadDate", "desc"), limit(3)));
         
         const projectsList = querySnapshot.docs.map(doc => {
           const data = doc.data();
@@ -45,7 +44,7 @@ export default function NewProjects() {
           } as Project;
         });
 
-        setProjects(projectsList.slice(0, 3));
+        setProjects(projectsList);
        
       } catch (error) {
         console.error("Error fetching documents: ", error);
@@ -56,9 +55,8 @@ export default function NewProjects() {
     getAllDocuments();
     },[]);
 
-    console.log(projects)
   return (
-    <div className='mx-14 sm:mx-20 2xl:mx-32 mt-20 text-center'>
+    <div className='mx-8 sm:mx-20 2xl:mx-32 mt-20 text-center'>
       {
         projects.length > 0 ? 
         <h2 className='text-4xl font-bold text-[#677582] mb-20'>NOVI PROJEKTI</h2> :
@@ -82,7 +80,7 @@ export default function NewProjects() {
 
       {
         projects.length > 0 ? 
-      <div className='relative w-[250px] mx-auto'>
+      <div className='relative w-full xsm:w-[300px] lg:w-[250px] sm:w-2/4  mx-auto'>
         <Link href='/projects'>
           <button className='drop-shadow-xl w-full py-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
             Ostali projekti

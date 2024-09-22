@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function OurVision() {
   return (
-    <div className='md:relative mx-4 xl:mx-14 2xl:mx-32 mt-20 md:mb-40 flex flex-col md:flex-row'>
+    <div className='md:relative mx-4 xl:mx-14 2xl:mx-32 mt-20 md:mb-42 xl:mb-48 flex flex-col md:flex-row'>
         <div className='md:relative w-full md:w-1/2 drop-shadow-xl bg-[#FAFAFA] p-8 z-10'>
             <div>
                 <h3 className='text-[#677582] text-4xl font-bold mb-8'>NAŠA VIZIJA</h3>
