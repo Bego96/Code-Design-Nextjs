@@ -21,7 +21,7 @@ interface ImageRef {
 
 type Props = {
     params: {
-        projectId: string
+        id: string
     }
 }
 
@@ -42,15 +42,15 @@ export async function generateStaticParams() {
   });
    
     return projectsList.map((post: any) => ({
-      projectId: post.id,
+      id: post.id,
     }))
 }
 
-export default function Projects({ params: { projectId }}: Props) {
+export default function Projects({ params: { id }}: Props) {
 
     
     return (
-        <Project id={projectId}/>
+        <Project id={id}/>
     )
     
 }
