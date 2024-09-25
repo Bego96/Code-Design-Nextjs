@@ -57,7 +57,7 @@ export default function Form() {
 
   return (
     <div className='p-10 flex justify-center items-center flex-col m-auto'>
-      <div className='w-1/3 text-center drop-shadow-lg bg-[#FAFAFA] flex flex-col p-8'>
+      <div className='w-[95%] sm:w-2/3 xl:w-1/3 text-center drop-shadow-lg bg-[#FAFAFA] flex flex-col p-8'>
       <div className='w-1/4 mx-auto mb-10'>
           <Image className='w-full' src={`https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/logo%2Fcode-design-logo.jpg?alt=media&token=a58dd669-680a-425c-b7bc-5bb70fb05ffd`} height={500} width={500} alt="Code Design logo"/>
         </div>

@@ -97,7 +97,7 @@ export default function Project({ id }: Props) {
 
 
   return (
-    <div className='w-[70%] my-20 mx-auto'>
+    <div className='w-[95%] md:w-[70%] my-20 mx-auto'>
       <h2 className='text-2xl font-bold text-[#677582] text-center mb-20'>PREGLED PROJEKTA</h2>
       
         <div className=' mb-12'>

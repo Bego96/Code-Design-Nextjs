@@ -21,9 +21,8 @@ export default function NavProfile({ user }: any) {
     };
   }, [profileMenu]);
 
-  const handleSignOut = async () => {
-    await signOut();
-  };
+
+ 
 
   if (user) {
     return (
@@ -44,7 +43,7 @@ export default function NavProfile({ user }: any) {
         </div>
         {profileMenu && (
           <div ref={ref} className='p-6 absolute top-20 right-0 bg-[#FAFAFA] drop-shadow-md'>
-            <button onClick={handleSignOut} className='w-[150px] bg-slate-800 py-2 rounded-md text-[#FAFAFA]'>Sign Out</button>
+            <button onClick={() => signOut({ callbackUrl: '/', redirect:true })} className='w-[150px] bg-slate-800 py-2 rounded-md text-[#FAFAFA]'>Sign Out</button>
           </div>
         )}
       </div>
