@@ -30,7 +30,10 @@ export default function Form() {
     });
 
     if (userInfo.email) {
-      router.push(`/reset-password/${userInfo.email}`)
+      const query = new URLSearchParams({
+        email: userInfo.email
+      }).toString();
+      router.push(`/reset-password?${query}`);
     } else {
       setError("Korisnički email je pogrešan");
     }
