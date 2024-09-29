@@ -58,6 +58,7 @@ export default function Projects() {
 
     console.log(projects)
   return (
+    
     <div className='mx-14 sm:mx-20 2xl:mx-32 mt-20 text-center'>
       
       <h2 className='text-4xl font-bold text-[#677582] mb-20'>SVI PROJEKTI</h2> 

@@ -4,27 +4,24 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react'; // Correct import for next-auth
 import { useRouter } from 'next/navigation';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db, auth } from '../firebaseConfig';
-import { signInWithCustomToken } from 'firebase/auth';
 import Image from 'next/image';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { db } from '@/app/firebaseConfig';
+
 
 export default function Form() {
-  const [error, setError] = useState('');
   const router = useRouter();
-  const [type, setType] = useState('password')
- 
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-
+    
     let users = collection(db, "users");
-    let findUserByEmail = query(users, where("email", "==", email), where("password", "==", password));
+    let findUserByEmail = query(users, where("email", "==", email));
     let querySnapshot = await getDocs(findUserByEmail);
     let userInfo: any = null;
     
@@ -32,41 +29,12 @@ export default function Form() {
       userInfo = { id: doc.id, ...doc.data() };
     });
 
-    
-
-    console.log("ADMIN USER? " + userInfo.admin)
-
-    if (userInfo.admin) {
-      if (!userInfo || userInfo.email !== email || userInfo.password !== password ) {
-        setError("Pogrešan email ili password");
-      } else {
-        const result = await signIn('credentials', { redirect: false, email, password });
-  
-        if (result?.error) {
-          setError(result.error);
-        } else {
-        
-          router.push('/dashboard');
-          router.refresh();
-  
-        }
-      }
+    if (userInfo.email) {
+      router.push(`/reset-password/${userInfo.email}`)
     } else {
-      setError("Korisnik nije administrator!")
-    }
-    
-  };
-
-  const showPass = () => {
-    
-
-    if (type === 'password') {
-      setType('text')
-    } else {
-      setType('password')
+      setError("Korisnički email je pogrešan");
     }
   }
-
   return (
     <div className='flex justify-center items-center flex-col m-auto h-screen'>
       <div className='w-full h-full sm:h-auto sm:w-2/3 lg:w-1/2 xl:w-1/3 text-center drop-shadow-lg bg-[#FAFAFA] flex flex-col p-4 sm:p-8'>
@@ -82,21 +50,7 @@ export default function Form() {
           <div className='border border-[#495057] h-[48px] placeholder-[#495057] mb-8'>
             <input name="email" type="email" placeholder='Email adresa' className='w-full h-full pl-2' required/>
           </div>
-            
-            <div className='relative border border-[#495057] h-[48px] placeholder-[#495057]'>
-              <input id="password" name="password" type={type} placeholder='Lozinka' className='w-full h-full pl-2' required/>
-              {
-                type === 'password' ? 
-                <FaEye className='absolute right-4 top-4 cursor-pointer' onClick={showPass}/> :
-                <FaEyeSlash className='absolute right-4 top-4 cursor-pointer' onClick={showPass}/>
-              }
-            </div>
-            
-          <div className='flex justify-end text-[#495057] my-10 cursor-pointer' onClick={() => router.push('/reset-password/confirm-email')}>
-            <p>Zaboravili ste lozinku?</p>
-          </div>
-          
-          <button type="submit" className='bg-[#222222] text-[#FAFAFA] h-[48px]'>Prijavi se</button>
+          <button type="submit" className='bg-[#222222] text-[#FAFAFA] h-[48px]'>Potvrdi email</button>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           
         </form>
