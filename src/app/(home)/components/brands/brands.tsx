@@ -38,13 +38,14 @@ export default function Brands() {
   }, []);
 
   return (
-    <div className='mt-60 md:mt-48 bg-white flex items-center'>
+    <div className='mt-60 md:mt-48 bg-white flex items-center cursor-pointer'>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={5}
         slidesPerView={slidesPerView}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
+        
       >
         <SwiperSlide>
           <div className='w-[30%] mx-auto'>

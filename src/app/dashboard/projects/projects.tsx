@@ -167,7 +167,7 @@ export default function Projects() {
       </Modal>
 
       <div className='flex flex-col md:flex-row justify-between items-center md:items-start'>
-        <h2 className='text-3xl text-[#495057] mb-4'>OBJAVLJENI PROJEKTI</h2>
+        <h2 className='text-3xl text-[#495057] mb-8'>OBJAVLJENI PROJEKTI</h2>
         <div className='flex flex-col xsm:flex-row'>
           <button disabled={projects.length === 0} onClick={handleOpen} className={`flex items-center ${projects.length === 0 ? 'bg-[#95b2f2]' : 'bg-[#6D89C7] hover:bg-[#5A7ECE]'} px-6 py-2 mb-4 xsm:mb-0 xsm:mr-4 text-white`}>
             <FaRegTrashAlt className='mr-2'/>Obriši projekat

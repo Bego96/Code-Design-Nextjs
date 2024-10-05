@@ -25,7 +25,7 @@ export default function Footer() {
             </div>
         </div>
         <div className='mx-auto hidden lg:block h-26 block w-[1px] bg-[#FAFAFA]'></div>
-        <div>
+        <div className='text-center lg:text-left'>
             <ul>
                 <Link href="/"><li className='mb-6'>Početna</li></Link>
                 <Link href="/about-us"><li className='mb-6'>O nama</li></Link>
@@ -34,25 +34,31 @@ export default function Footer() {
             </ul>
         </div>
         <div>
-            <ul>
-                <li className='flex mb-6 gap-4'> 
-                    <IoLocationSharp size={24}/>
-                    <span>75000, Stupine B-8, Tuzla, BiH</span>
-                </li>
-                <li className='flex mb-6 gap-4'>
-                    <FaPhone size={24}/>
-                    <span>+387 35 248 440, + 387 61 078 792</span></li>
-                <li className='flex mb-6 gap-4'>
-                    <MdEmail size={24}/>
-                    <span>info@code-design.ba</span></li>
-                <li className='flex mb-6 gap-4'>
-                    <a href='https://linkedin.com/company/codedesigndoo/?originalSubdomain=ba' target="_blank"><FaLinkedin size={24}/></a>
-                    <a href='https://www.facebook.com/code.design.tuzla' target="_blank"><FaFacebookSquare size={24}/></a>
-                </li>
-            </ul>
-        </div>
+  <ul className='flex flex-col items-center lg:items-start'>
+    <li className='flex mb-6 gap-4'>
+      <IoLocationSharp size={24} />
+      <span>75000, Stupine B-8, Tuzla, BiH</span>
+    </li>
+    <li className='flex mb-6 gap-4'>
+      <FaPhone size={24} />
+      <span>+387 35 248 440, + 387 61 078 792</span>
+    </li>
+    <li className='flex mb-6 gap-4'>
+      <MdEmail size={24} />
+      <span>info@code-design.ba</span>
+    </li>
+    <li className='flex mb-6 gap-4'>
+      <a href='https://linkedin.com/company/codedesigndoo/?originalSubdomain=ba' target='_blank'>
+        <FaLinkedin size={24} />
+      </a>
+      <a href='https://www.facebook.com/code.design.tuzla' target='_blank'>
+        <FaFacebookSquare size={24} />
+      </a>
+    </li>
+  </ul>
+</div>
         <div>
-            <ul>
+            <ul className='text-center lg:text-left'>
                 <li className='mb-6'><span className='font-semibold'>Registarski br: </span> 032-0-Reg-18-000718</li>
                 <li className='mb-6'><span className='font-semibold'>D/PDV br: </span>4210329050008/210329050008</li>
                 <li className='mb-6'><span className='font-semibold'>Račun br: </span>1610000199740083 Raiffeisen Banka DD</li>

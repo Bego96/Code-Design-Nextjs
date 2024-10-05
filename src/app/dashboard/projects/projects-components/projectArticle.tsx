@@ -27,7 +27,7 @@ export default function ProjectArticle({pushSelectedProjects, id, projectName, p
   // In loop we will use database function to delete each project with corresponding ID
   return (
     
-      <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full md:w-[30%] h-[350px] lg:h-[450px] mb-12'>
+      <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full xsm:w-[65%] md:w-[30%] h-[350px] lg:h-[450px] mb-4 sm:mb-6'>
         <Link href={`/dashboard/${id}`}>
         <input 
         id="checkProject"

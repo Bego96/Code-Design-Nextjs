@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Bim() {
   return (
-    <div className='bg-[#516795] p-8 gap-8 flex flex-col lg:flex-row mx-4 xl:mx-14 2xl:mx-32 mt-20'>
+    <div className='bg-[#516795] p-4 md:p-8 gap-8 flex flex-col lg:flex-row mx-4 xl:mx-14 2xl:mx-32 mt-20'>
         <div className='w-full lg:w-1/2'>
             <h3 className='text-[#FAFAFA] text-4xl font-bold mb-16'>BIM IZGRADNJA</h3>
             <div className='w-full mb-8'>
@@ -14,7 +14,7 @@ export default function Bim() {
             </div>
         </div>
         <div className='w-full lg:w-1/2'>
-            <div className='bg-[#FAFAFA] text-[#495057] p-8'>
+            <div className='bg-[#FAFAFA] text-[#495057] p-4 md:p-8'>
                 <p className='text-xl'><span className='font-semibold'>BIM</span> je napredni sistem koji koristi <span className='font-semibold'>3D model</span> objekta kao osnovu, ali također uključuje širok spektar informacija kao što su:</p>
                 <ul className='ml-6 list-disc'>
                     <li className='text-xl'><span className='font-semibold'>Geodetske koordinate:</span> Precizni podaci o lokaciji i orijentaciji objekta u fizičkom prostoru.</li>

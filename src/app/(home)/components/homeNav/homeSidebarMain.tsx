@@ -29,7 +29,7 @@ export default function HomeSidebarMain({user}: any) {
         <aside className={`bg-[#FAFAFA] z-50 p-4 shadow-[-4px_1px_22px_-14px_#000000] fixed right-0 top-0 w-full xsm:w-1/2 md:w-1/3 top-0 transition-all ease-in-out duration-150 ${sidebarVisibility ? 'right-0' : 'right-[-100%]'} flex flex-col bg-white h-full lg:right-[-100%]`}>
         <AiOutlineClose className='absolute top-5 right-5 cursor-pointer' size={25} onClick={() => openSidebar()}/>
         <div className='mt-14 h-full'>
-            <div className='w-full mt-10'>
+            <div className='w-full mt-4'>
                 
                     <Link href="/" >
                         <button onClick={() => onChosenLink(null)} className='text-left pl-4 cursor-point w-full py-4 bg-white hover:drop-shadow-md'>

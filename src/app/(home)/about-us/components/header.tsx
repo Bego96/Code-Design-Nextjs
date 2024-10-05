@@ -7,7 +7,7 @@ export default function Header() {
     const router = useRouter();
   return (
     <div className='bg-[#516795] mx-4 xl:mx-14 2xl:mx-32 mt-20'>
-            <div className='flex flex-col lg:flex-row p-8 pb-0 gap-10'>
+            <div className='flex flex-col lg:flex-row p-4 md:p-8 pb-0 gap-10'>
                 <div className='w-full lg:w-1/2'>
                     <div className='w-full'>
                         <Image 
@@ -27,7 +27,7 @@ export default function Header() {
                         <p className='text-xl'>Jasmin Huremović dipl.ing.arh.</p>
                     </div>
                 </div>
-                <div className='bg-[#FAFAFA] flex flex-col justify-between w-full lg:w-1/2 p-8 text-[#495057]'>
+                <div className='bg-[#FAFAFA] flex flex-col justify-between w-full lg:w-1/2 p-4 md:p-8 text-[#495057]'>
                     <div className='mb-14 xl:mb-0'>
                         <h2 className='text-4xl font-bold'>O NAMA</h2>
                         <p className='text-xl mt-6'>
@@ -52,7 +52,7 @@ export default function Header() {
             </div>
         </div>
         <div className='flex flex-col lg:flex-row justify-between gap-10 p-8'>
-            <div className='w-full lg:w-1/3 xl:w-1/3 bg-[#FAFAFA] lg:h-[30%] p-8'>
+            <div className='w-full lg:w-1/3 xl:w-1/3 bg-[#FAFAFA] lg:h-[30%] p-4 md:p-8'>
                 <p className='text-xl text-[#495057]'>Naš mladi tim nudi efikasniji pristup arhitekturi. Vodimo klijente od ideje do realizacije koristeći savremene metode, materijale i usluge project managementa, u skladu s najnovijim trendovima.</p>
             </div>
             <div className='w-full lg:w-2/3 xl:w-2/3'>
