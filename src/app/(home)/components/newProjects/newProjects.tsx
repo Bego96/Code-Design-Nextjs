@@ -80,14 +80,15 @@ export default function NewProjects() {
 
       {
         projects.length > 0 ? 
-      <div className='relative w-full xsm:w-[300px] lg:w-[250px] sm:w-2/4  mx-auto'>
+      
         <Link href='/projects'>
-          <button className='drop-shadow-xl w-full py-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
+          <button className='w-full xsm:w-1/2 md:w-1/4 lg:w-[20%] mx-auto flex justify-center items-center drop-shadow-xl flex w-full p-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
             Ostali projekti
+            <GoArrowUpRight size={22} color='#FAFAFA' className='ml-[4px] mt-[4px]'/>
           </button>
         </Link>
-        <GoArrowUpRight size={22} color='#FAFAFA' className='absolute right-10 top-5'/>
-      </div> : null
+        
+       : null
       }
     </div>
   )

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function Header() {
     const router = useRouter();
   return (
-    <div className='bg-[#516795] mx-4 xl:mx-14 2xl:mx-32 mt-20'>
+    <div className='bg-[#516795] mx-4 xl:mx-14 2xl:mx-32 mt-4 md:mt-16'>
             <div className='flex flex-col lg:flex-row p-4 md:p-8 pb-0 gap-10'>
                 <div className='w-full lg:w-1/2'>
                     <div className='w-full'>

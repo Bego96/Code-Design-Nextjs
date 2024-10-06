@@ -8,25 +8,25 @@ export default function ContactUs() {
   return (
     <div id="contact" className='p-8 bg-[#516795]  gap-8 flex flex-col md:justify-between lg:flex-row mx-0 xsm:mx-4 sm:mx-20 2xl:mx-32 mt-20'>
         <div className='w-full lg:w-1/2'>
-            <h3 className='text-3xl text-[#FAFAFA] font-semibold'>KONTAKRIJATE NAS</h3>
+            <h3 className='text-3xl text-[#FAFAFA] font-semibold mb-8'>KONTAKRIJATE NAS</h3>
             <form className='w-full'>
-                <div className='w-full my-8 relative'>
-                    <RiContactsFill size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Ime i prezime' className='w-full py-2 pl-10 '/>
+                <div className='h-[48px] w-full my-4 relative'>
+                    <RiContactsFill size={20} className='absolute left-2 top-4' color='#495057'/>
+                    <input type='text' placeholder='Ime i prezime' className='h-full w-full py-2 pl-10 '/>
                 </div >
-                <div className='w-full my-8 relative'>
-                    <FaPhone size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Telefon' className='w-full py-2 pl-10 '/>
+                <div className='h-[48px] w-full my-4 relative'>
+                    <FaPhone size={20} className='absolute left-2 top-4' color='#495057'/>
+                    <input type='text' placeholder='Telefon' className='w-full h-full py-2 pl-10 '/>
                 </div>
-                <div className='w-full my-8 relative'>
-                    <MdEmail size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Email adresa' className='w-full py-2 pl-10 '/>
+                <div className='h-[48px] w-full my-4 relative'>
+                    <MdEmail size={20} className='absolute left-2 top-4' color='#495057'/>
+                    <input type='text' placeholder='Email adresa' className='w-full h-full py-2 pl-10 '/>
                 </div>
-                <div className='w-full my-8 relative'>
-                    <MdOutlineTitle size={18} className='absolute left-2 top-3' color='#495057'/>
-                    <input type='text' placeholder='Naslov' className='w-full py-2 pl-10 '/>
+                <div className='h-[48px] w-full my-4 relative'>
+                    <MdOutlineTitle size={20} className='absolute left-2 top-4' color='#495057'/>
+                    <input type='text' placeholder='Naslov' className='w-full h-full py-2 pl-10 '/>
                 </div>
-                <div className='w-full my-8'>
+                <div className='w-full my-4'>
                     <textarea rows={10} cols={20} className='w-full p-2 resize-none' placeholder='Tekst poruke'>
                     </textarea>
                 </div>
@@ -35,7 +35,7 @@ export default function ContactUs() {
                 </div>
             </form>
         </div>
-        <div className='w-full lg:w-1/2'>
+        <div className=' w-full lg:w-1/2'>
             <Image alt="location" height={800} width={800} src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F0521cdeec26f919b797d84b5477f9f17.png?alt=media&token=c98face3-37ae-4b86-a458-c9756175dc99'/>
         </div>
     </div>
