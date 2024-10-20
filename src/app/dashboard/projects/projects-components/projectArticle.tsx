@@ -27,14 +27,15 @@ export default function ProjectArticle({pushSelectedProjects, id, projectName, p
   // In loop we will use database function to delete each project with corresponding ID
   return (
     
-      <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full xsm:w-[65%] md:w-[30%] h-[350px] lg:h-[450px] mb-4 sm:mb-6'>
-        <Link href={`/dashboard/${id}`}>
+      <div onMouseEnter={()=> setCheckbox(true)} onMouseLeave={()=> setCheckbox(false)} className='relative cursor-pointer overflow-hidden w-full xsm:w-[65%] md:w-[30%] xl:w-[25%] h-[350px] sm:h-[450px] lg:h-[520px] xl:h-[600px] mb-4 sm:mb-6'>
+        
         <input 
         id="checkProject"
           type="checkbox" 
           onChange={setActiveChecks}
-          className={`${checkbox || isCheckActive ? 'block': 'hidden'} z-10 cursor-pointer absolute right-2 top-2 w-6 h-6 border border-gray-300 rounded`}
+          className={`${checkbox || isCheckActive ? 'block': 'lg:hidden'} z-10 cursor-pointer absolute right-2 top-2 w-6 h-6 border border-gray-300 rounded`}
         />
+        <Link href={`/dashboard/${id}`}>
         <div className='relative w-full h-full'>
           <Image
             className="object-cover"
@@ -46,6 +47,7 @@ export default function ProjectArticle({pushSelectedProjects, id, projectName, p
             <h3 className='font-semibold'>{projectName}</h3>
             <p>{projectDate}</p>
           </div>
+
         </div>
         </Link>
       </div>

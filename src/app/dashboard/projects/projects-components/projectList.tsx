@@ -51,7 +51,7 @@ export default function ProjectList({ pushSelectedProjects, removeSelectedProjec
   }, []);
 
   return (
-    <div className='mt-20 flex flex-col md:flex-row flex-wrap gap-10 items-center'>
+    <div className='mt-20 flex flex-col md:flex-row flex-wrap gap-2 md:gap-4 items-center'>
       {projects.length > 0 ? projects.map((project) => (
         <ProjectArticle
           key={project.id}

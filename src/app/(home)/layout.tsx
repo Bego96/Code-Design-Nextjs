@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter,  } from "next/font/google";
+import localfont from "next/font/local";
 import "@/app/globals.css";
 import { HomeSidebar } from "./components/homeNav/homeSidebar";
 import { HomeNav } from "./components/homeNav/homeNav";
 import Footer from "./components/footer/footer";
+import '../globals.css'
 
-
+const bankGothic = localfont({
+  src: [{
+    path: '../../../public/fonts/BankGothic Md BT.ttf',
+    weight: "400"
+  }],
+  variable: "--font-bankgothic-md-bt"
+})
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +31,7 @@ export default function RootLayout({
  
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${bankGothic.variable}`}>
       <body className="relative bg-[#FAFAFA]">
         
       <HomeSidebar />

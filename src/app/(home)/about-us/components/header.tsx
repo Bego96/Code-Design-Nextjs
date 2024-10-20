@@ -51,7 +51,7 @@ export default function Header() {
                 <p className='text-6xl font-semibold mt-6'>100%</p>
             </div>
         </div>
-        <div className='flex flex-col lg:flex-row justify-between gap-10 p-8'>
+        <div className='flex flex-col lg:flex-row justify-between gap-10 p-4 md:p-8'>
             <div className='w-full lg:w-1/3 xl:w-1/3 bg-[#FAFAFA] lg:h-[30%] p-4 md:p-8'>
                 <p className='text-xl text-[#495057]'>Naš mladi tim nudi efikasniji pristup arhitekturi. Vodimo klijente od ideje do realizacije koristeći savremene metode, materijale i usluge project managementa, u skladu s najnovijim trendovima.</p>
             </div>

@@ -17,14 +17,14 @@ export default function HomeNavMain({user}:any) {
 
 
   return (
-    <nav className='px-4 xl:px-14 2xl:px-32 py-6 flex 2xl:flex-row justify-between items-center xl:mt-4'>
+    <nav className='sticky top-0 px-4 xl:px-14 2xl:px-32 py-6 flex 2xl:flex-row justify-between items-center xl:mt-4 z-40 bg-[#FAFAFA]'>
         <div className='flex items-center'>
             <Link href={`${user && user.admin === true ? '/dashboard' : '/sign-in'}`}>
                 <div className='flex justify-center items-center lg:mr-8 xl:border-r-[1px] border-slate-400'>
                     <div className='w-14 mr-4'>
                         <Image className='w-full' alt="logo" src="https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/logo%2Fcode-design-logo.jpg?alt=media&token=a58dd669-680a-425c-b7bc-5bb70fb05ffd" height={500} width={500}/>
                     </div>
-                    <h2 className='hidden xl:block text-xl lg:pr-14'>CODE Design</h2>
+                    <h2 className='hidden xl:block text-2xl lg:pr-14 font-bankgothic'>CODE Design</h2>
                 </div>
             </Link>
             <Link href="/">

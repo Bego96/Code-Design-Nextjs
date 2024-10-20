@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import { db } from '@/app/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -14,6 +14,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+
+const customStyles: CSSProperties & { [key: string]: string } = {
+   "--swiper-navigation-color": "#516795",
+  "--swiper-navigation-size": "30px",
+};
 
 interface Project {
   id: string;
@@ -65,7 +70,6 @@ type Props = {
 
 export default function Project({ id }: Props) {
   const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter(segment => segment !== '');
@@ -85,23 +89,20 @@ export default function Project({ id }: Props) {
       } catch (error) {
         console.error('Failed to fetch project:', error);
         setError('Failed to fetch project data');
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchData();
     
   }, [id]);
 
-  if (loading) return <div className='flex justify-center items-center h-screen'><BarLoader /></div>;
   if (error) return <div className='flex justify-center items-center h-screen'>{error}</div>;
 
-  if (!project) return <div>No project data</div>;
+  if (!project) return <div className='flex justify-center items-center h-screen'><p>No project data</p></div>;
 
 
   return (
-    <div className='w-[95%] md:w-[70%] my-20 mx-auto'>
+    <div className='w-[95%] md:w-[70%] my-10 mx-auto'>
       <IoIosArrowRoundBack className='cursor-pointer' size={44} onClick={() => {router.push(cleanedPath)}}/>
       <h2 className='text-2xl font-bold text-[#677582] text-center mb-20'>PREGLED PROJEKTA</h2>
       
@@ -117,7 +118,7 @@ export default function Project({ id }: Props) {
       navigation
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
-     className='swiper-container'
+      style={customStyles}
     >
       {project.projectImages.map((image) => (
           <SwiperSlide key={image.id}>

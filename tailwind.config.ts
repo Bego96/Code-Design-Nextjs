@@ -12,7 +12,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        'header-bg': "url('https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F144927ec5ac94821a735dad8b2a5eb05.jpg?alt=media&token=5ad34383-f724-49aa-bc77-faa91fe8dd10')",
+        'header-bg': "url('https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2Fblueprint.png?alt=media&token=560889e4-4e54-4e83-af75-2fbdb8613558')",
+      },
+      fontFamily: {
+        bankgothic: ['var(--font-bankgothic-md-bt)']
       },
       screens: {
         'xsm': '512px',

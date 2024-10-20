@@ -1,7 +1,6 @@
 import { doc, getDoc, collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '@/app/firebaseConfig';
 import Project from './project';
-import './styles.css'
 
 interface Project {
     id: string;
