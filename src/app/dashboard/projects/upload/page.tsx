@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useRef, ChangeEvent, FormEvent } from 'react'
+import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from 'react'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { VscAdd } from "react-icons/vsc";
 import Backdrop from '@mui/material/Backdrop';
@@ -26,18 +26,6 @@ interface ImageRef {
   imageName: string
 }
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: window.innerWidth > 1280 ? '30%' : (window.innerWidth > 640 ? '60%' : '90%'),
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-  zIndex: 10,
-  outline: 'none'
-};
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -65,7 +53,10 @@ interface Project {
   projectUploadDate: Date
 }
 
+
+
 export default function UploadProjects() {
+
   const notify = (message: string) => toast(message);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -77,6 +68,21 @@ export default function UploadProjects() {
   const [projectName, setProjectName] = useState<string>('');
   const [projectLocation, setProjectLocation] = useState<string>('');
   const [projectDate, setProjectDate] = useState<string>('');
+
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: screenWidth > 1280 ? '30%' : (screenWidth > 640 ? '60%' : '90%'),
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+    zIndex: 10,
+    outline: 'none'
+  };
 
   
   const handleClose = () => {
@@ -239,6 +245,20 @@ export default function UploadProjects() {
   }
 
   
+  useEffect(()=>{
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+
   return (
     <div className='mt-20'>
       {/* Modal window for image upload */}
