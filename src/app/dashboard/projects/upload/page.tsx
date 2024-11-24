@@ -31,7 +31,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 650,
+  width: window.innerWidth > 1280 ? '30%' : (window.innerWidth > 640 ? '60%' : '90%'),
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
@@ -258,7 +258,7 @@ export default function UploadProjects() {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" className="text-center" variant="h6" component="h2">
-              <div>
+              <div className='w-full'>
                 <div className="flex items-center justify-center w-full">
                   <label htmlFor="dropzone-file" className="flex items-center justify-around w-full p-6 border-2 border-dashed rounded-lg cursor-pointer border-[#495057]">
                     <div className="flex items-center justify-center pt-5 pb-6">

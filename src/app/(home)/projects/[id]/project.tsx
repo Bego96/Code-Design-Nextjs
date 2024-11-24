@@ -98,17 +98,18 @@ export default function Project({ id }: Props) {
 
   if (error) return <div className='flex justify-center items-center h-screen'>{error}</div>;
 
-  if (!project) return <div className='flex justify-center items-center h-screen'><p>No project data</p></div>;
-
-
   return (
     <div className='w-[95%] md:w-[70%] my-10 mx-auto'>
-      <IoIosArrowRoundBack className='cursor-pointer' size={44} onClick={() => {router.push(cleanedPath)}}/>
+      <div className='flex items-center cursor-pointer mb-10' onClick={() => {router.push(cleanedPath)}}> 
+        <IoIosArrowRoundBack size={26}/>
+        <span>Nazad na projekte</span>
+      </div>
       <h2 className='text-2xl font-bold text-[#677582] text-center mb-20'>PREGLED PROJEKTA</h2>
       
         <div className=' mb-12'>
-          <h3 className='text-[#495057] font-bold text-xl mb-4'>{project.projectName}</h3>
-          <p className='text-[#495057] font-light'>{project.projectLocation + " " + project.projectDate}</p>
+          <h3 className='text-[#495057] mb-4 font-semibold'>Faza: <span className='font-light'>{' ' + project?.projectName}</span></h3>
+          <p className='text-[#495057] mb-4 font-semibold'>Lokacija: <span className='font-light'>{project?.projectLocation}</span></p>
+          <p className='text-[#495057] mb-4 font-semibold'>Godina: <span className='font-light'>{project?.projectDate}</span></p>
         </div>
         <Swiper
       // install Swiper modules
@@ -120,7 +121,7 @@ export default function Project({ id }: Props) {
       onSlideChange={() => console.log('slide change')}
       style={customStyles}
     >
-      {project.projectImages.map((image) => (
+      {project?.projectImages.map((image) => (
           <SwiperSlide key={image.id}>
             <div className='h-full cursor-pointer'>
               <Image alt={image.imageName} className='w-auto max-h-[700px] mx-auto' src={image.imageSource} height={1000} width={1000}/>
