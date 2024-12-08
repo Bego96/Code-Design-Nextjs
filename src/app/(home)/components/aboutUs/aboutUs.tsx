@@ -46,7 +46,7 @@ export default function AboutUs() {
                     Danas se BIM sistem naziva i 5D modeliranje jer osim 3D modela BIM model u sebi sadrzi dodatne informacije te prilikom izgradnje objekta uz pomoc BIM sistema se prate faze izgradnje, a kasnije i odrzavanje objekta.
                     </p>
                 </div>
-                <div className='flex justify-end mt-8'>
+                <div className='flex justify-center md:justify-end mt-8'>
                     <div className='text-[#FAFAFA] justify-center gap-4 flex items-center bg-[#6D89C7] hover:bg-[#5C74AA] w-[250px] h-[50px] cursor-pointer'>
                         <button className='ml-4 text-lg' onClick={() => router.push('/about-us')}>Pročitaj više</button>
                         <PiArrowSquareInFill size={24} className='mr-4'/>

@@ -50,11 +50,16 @@ export default function HomeSidebarMain({user}: any) {
                             Usluge
                         </button>
                     </Link>
-                   
+                    
                
                     <Link href="/#contact" scroll={true}>
                         <button onClick={() => onChosenLink('contact')} className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
                             Kontakt
+                        </button>
+                    </Link>
+                    <Link href={`${user && user.admin === true ? '/dashboard' : '/sign-in'}`} scroll={true}>
+                        <button className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
+                            Dashboard
                         </button>
                     </Link>
                 
@@ -62,7 +67,6 @@ export default function HomeSidebarMain({user}: any) {
         </div>
         </aside>
     
-
     
     
   )
