@@ -10,7 +10,7 @@ export default function Header() {
                 Imamo više od 10 godina iskustva u različitim arhitektonskim oblastima.
                 </p>
             </div>
-            <div className='drop-shadow-2xl absolute mt-10  md:-bottom-24 bg-[#FAFAFA] text-[#495057] px-4 sm:px-10 py-6 md:w-[70%] left-0 right-0 ml-auto mr-auto'>
+            <div className='drop-shadow-2xl absolute mt-10  md:-bottom-24 bg-[#FAFAFA] text-[#495057] px-4 sm:px-10 py-6 md:w-[70%] xl:w-1/2 left-0 right-0 ml-auto mr-auto'>
                 <h2 className='text-2xl'>PRIDRUŽITE SE NAŠOJ MAIL LISTI</h2>
                 <span className='bg-[#495057] h-px block my-4'></span>
                 <p className='text-xl mb-6'>Ne propustite najnovije vijesti iz arhitekture i naših budućih projekata</p>

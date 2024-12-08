@@ -49,8 +49,8 @@ export default function ContactUs() {
                     <textarea name='message' rows={10} cols={20} className='w-full p-2 resize-none rounded' placeholder='Tekst poruke'>
                     </textarea>
                 </div>
-                <div className='bg-[#222222] cursor-pointer hover:bg-slate-100 text-[#FAFAFA] hover:text-slate-900 py-4 px-12 h-[50px] flex items-center inline-flex'>
-                    <button type='submit' className=''>
+                <div className='bg-[#222222] cursor-pointer w-full sm:w-1/2 text-[#FAFAFA] py-4 px-12 h-[50px] flex items-center inline-flex'>
+                    <button type='submit' className='w-full'>
                         Pošalji poruku
                     </button>
                 </div>
