@@ -31,29 +31,29 @@ export default function ContactUs() {
             <form className='w-full' onSubmit={handleSubmit}>
                 <div className='h-[48px] w-full my-4 relative'>
                     
-                    <input type='text' name='firstName' placeholder='Ime i prezime' className='h-full w-full p-2 rounded'/>
+                    <input type='text' name='firstName' placeholder='Ime i prezime' className='h-full w-full p-2'/>
                 </div >
                 <div className='h-[48px] w-full my-4 relative'>
                     
-                    <input type='text' name='phone' placeholder='Telefon' className='w-full h-full p-2  rounded'/>
+                    <input type='text' name='phone' placeholder='Telefon' className='w-full h-full p-2 '/>
                 </div>
                 <div className='h-[48px] w-full my-4 relative'>
                    
-                    <input type='text' name='email' placeholder='Email adresa' className='w-full h-full p-2  rounded'/>
+                    <input type='text' name='email' placeholder='Email adresa' className='w-full h-full p-2 '/>
                 </div>
                 <div className='h-[48px] w-full my-4 relative'>
                    
-                    <input type='text' name='subject' placeholder='Naslov' className='w-full h-full p-2  rounded'/>
+                    <input type='text' name='subject' placeholder='Naslov' className='w-full h-full p-2 '/>
                 </div>
                 <div className='w-full my-4'>
-                    <textarea name='message' rows={10} cols={20} className='w-full p-2 resize-none rounded' placeholder='Tekst poruke'>
+                    <textarea name='message' rows={10} cols={20} className='w-full p-2 resize-none' placeholder='Tekst poruke'>
                     </textarea>
                 </div>
-                <div className='bg-[#222222] cursor-pointer w-full sm:w-1/2 text-[#FAFAFA] py-4 px-12 h-[50px] flex items-center inline-flex'>
-                    <button type='submit' className='w-full'>
-                        Pošalji poruku
-                    </button>
-                </div>
+                <div className='bg-[#222222] w-full xsm:mx-auto lg:mx-0 hover:bg-black cursor-pointer xsm:w-1/2 md:w-1/3 text-[#FAFAFA] h-[50px] flex items-center justify-center'>
+    <button type='submit' className='w-full'>
+        Pošalji poruku
+    </button>
+</div>
             </form>
         </div>
         <div className=' w-full lg:w-1/2'>

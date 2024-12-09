@@ -40,7 +40,7 @@ export default function Header() {
         <div className='flex flex-col justify-center items-center md:items-start md:gap-10 lg:gap-0 md:flex-row md:justify-around px-8 py-12 text-[#FAFAFA]'>
             <div className='text-center mt-6'>
                 <h3 className='text-slate-200 text-4xl'>GODINE ISKUSTVA</h3>
-                <p className='text-6xl font-semibold mt-6'>10</p>
+                <p className='text-6xl font-semibold mt-6'>15</p>
             </div>
             <div className='text-center mt-6'>
                 <h3 className='text-slate-200 text-4xl'>PROJEKTI</h3>

@@ -45,10 +45,10 @@ export default function Projects() {
           } as Project;
         });
 
-        setProjects(projectsList.slice(0, 3));
+        setProjects(projectsList); 
        
       } catch (error) {
-        console.error("Error fetching documents: ", error);
+        console.error("Error fetching documents: ", error); 
       }
       
     }

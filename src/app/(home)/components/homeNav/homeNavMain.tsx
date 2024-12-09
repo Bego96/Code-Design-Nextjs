@@ -56,11 +56,11 @@ export default function HomeNavMain({user}:any) {
                 </button>
             </Link>
         </div>
-        <Link href="/#contact" scroll={true}>
-            <button onClick={() => scrollTo('contact')} className='bg-[#222222] hidden lg:flex hover:bg-slate-600 text-[#FAFAFA] px-16 py-4'>
+        <div  onClick={() => scrollTo('contact')} className='bg-[#222222] hover:bg-black cursor-pointer text-[#FAFAFA] w-[10%] h-[50px] flex items-center justify-center hidden lg:block'>
+            <button type='submit' className='w-full h-full'>
                 Kontakt
             </button>
-        </Link>
+        </div>
         
         <RxHamburgerMenu className='lg:hidden cursor-pointer' size={20} onClick={()=> openSidebar()}/>
 

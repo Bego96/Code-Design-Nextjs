@@ -47,8 +47,8 @@ export default function AboutUs() {
                     </p>
                 </div>
                 <div className='flex justify-center md:justify-end mt-8'>
-                    <div className='text-[#FAFAFA] justify-center gap-4 flex items-center bg-[#6D89C7] hover:bg-[#5C74AA] w-[250px] h-[50px] cursor-pointer'>
-                        <button className='ml-4 text-lg' onClick={() => router.push('/about-us')}>Pročitaj više</button>
+                    <div onClick={() => router.push('/about-us')} className='text-[#FAFAFA] justify-center gap-4 flex items-center bg-[#6D89C7] hover:bg-[#5C74AA] w-[250px] h-[50px] cursor-pointer'>
+                        <button className='ml-4 text-lg'>Pročitaj više</button>
                         <PiArrowSquareInFill size={24} className='mr-4'/>
                     </div>
                 </div>

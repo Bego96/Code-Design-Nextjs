@@ -82,7 +82,7 @@ export default function NewProjects() {
         projects.length > 0 ? 
       
         <Link href='/projects'>
-          <button className='w-full xsm:w-1/2 md:w-1/4 lg:w-[20%] mx-auto flex justify-center items-center drop-shadow-xl flex w-full p-4 bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
+          <button className='w-full w-1/2 md:w-1/3 lg:w-1/4 xl:w-[15%] mx-auto flex justify-center items-center drop-shadow-xl flex w-full h-[50px] bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
             Ostali projekti
             <GoArrowUpRight size={22} color='#FAFAFA' className='ml-[4px] mt-[4px]'/>
           </button>
