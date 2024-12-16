@@ -59,11 +59,11 @@ export default function Projects() {
     console.log(projects)
   return (
     
-    <div className='mx-4 xsm:mx-14 sm:mx-20 2xl:mx-32 mt-8 md:mt-16 text-center'>
+    <div className='mx-4 xsm:mx-14 sm:mx-20 2xl:mx-72 mt-8 md:mt-16 text-center'>
       
       <h2 className='text-4xl font-bold text-[#677582] mb-20'>SVI PROJEKTI</h2> 
        
-      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mb-20'>
+      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-20'>
         
         {
           projects.length > 0 ? projects.map(project => (
