@@ -50,10 +50,10 @@ export default function ContactUs() {
                     </textarea>
                 </div>
                 <div className='bg-[#222222] w-full xsm:mx-auto lg:mx-0 hover:bg-black cursor-pointer xsm:w-1/2 md:w-1/3 text-[#FAFAFA] h-[50px] flex items-center justify-center'>
-    <button type='submit' className='w-full'>
-        Pošalji poruku
-    </button>
-</div>
+                    <button type='submit' className='w-full'>
+                        Pošalji poruku
+                    </button>
+                </div>
             </form>
         </div>
         <div className=' w-full lg:w-1/2'>

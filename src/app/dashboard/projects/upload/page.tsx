@@ -13,7 +13,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import Link from 'next/link';
 import { LuImagePlus } from "react-icons/lu";
 import Image from 'next/image';
-import { UploadTaskSnapshot, deleteObject, getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { UploadTaskSnapshot, deleteObject, getDownloadURL, getStorage, listAll, ref, uploadBytesResumable } from 'firebase/storage';
 import { db, storage } from '@/app/firebaseConfig';
 import { IoCloseSharp } from "react-icons/io5";
 import { styled } from '@mui/material/styles';
@@ -69,7 +69,21 @@ export default function UploadProjects() {
   const [projectLocation, setProjectLocation] = useState<string>('');
   const [projectDate, setProjectDate] = useState<string>('');
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState<number>(0); // Default to 0
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setScreenWidth(window.innerWidth); // Initialize width on client side
+
+      const handleResize = () => {
+        setScreenWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   const style = {
     position: 'absolute' as 'absolute',
@@ -108,6 +122,21 @@ export default function UploadProjects() {
     
   }
 
+  const fetchImageNames = async (): Promise<string[]> => {
+    const storage = getStorage();
+    const listRef = ref(storage, 'project_images/'); // Path where images are stored
+  
+    try {
+      const res = await listAll(listRef);
+      const imageNames = res.items.map((item) => item.name); // Retrieve all image names
+      return imageNames;
+    } catch (error) {
+      console.error('Error fetching image names:', error);
+      toast.error('Greška u dohvaćanju slika!');
+      return [];
+    }
+  };
+
   const uploadImage = async (e: ChangeEvent<HTMLInputElement>) => {
 
     if (image) {
@@ -122,11 +151,19 @@ export default function UploadProjects() {
         imageName: e.target.files[0].name
       };
       
+      const existingImageNames = await fetchImageNames();
+
+    // Check if the uploaded file name matches any existing image name
+    if (existingImageNames.includes(imgObj.imageName)) {
+      toast.error('Slika sa istim imenom već postoji!'); // Notify user
+      return;
+    }
       
-      if (imgObj?.fileRef) {
-        const storageRef = ref(storage, `project_images/${imgObj?.fileRef.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, imgObj.fileRef);
+    if (imgObj?.fileRef) {
+      const storageRef = ref(storage, `project_images/${imgObj?.fileRef.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, imgObj.fileRef);
        
+        
         uploadTask.on(
           "state_changed",
           (snapshot: UploadTaskSnapshot) => {
@@ -211,7 +248,7 @@ export default function UploadProjects() {
     if (image) {
       const storage = getStorage();
        
-        const desertRef = ref(storage, `images/${imgName.name}`);
+        const desertRef = ref(storage, `project_images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
           toast.success('Slika uspješno izbrisana')
@@ -229,7 +266,7 @@ export default function UploadProjects() {
     for (let i = 0; i < imageSrc.length; i++) {
       if (imageSrc[i].imageFileRef === imgName) {
         const storage = getStorage();
-        const desertRef = ref(storage, `images/${imgName.name}`);
+        const desertRef = ref(storage, `project_images/${imgName.name}`);
 
         deleteObject(desertRef).then(() => {
           toast.success('Slika uspješno izbrisana')
@@ -245,18 +282,7 @@ export default function UploadProjects() {
   }
 
   
-  useEffect(()=>{
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup function to remove the event listener when the component is unmounted
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  
 
 
   return (
