@@ -57,11 +57,7 @@ export default function HomeSidebarMain({user}: any) {
                             Kontakt
                         </button>
                     </Link>
-                    <Link href={`${user && user.admin === true ? '/dashboard' : '/sign-in'}`} scroll={true}>
-                        <button className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
-                            Dashboard
-                        </button>
-                    </Link>
+                    
                 
             </div>
         </div>

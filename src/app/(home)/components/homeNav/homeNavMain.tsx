@@ -50,11 +50,6 @@ export default function HomeNavMain({user}:any) {
                     Usluge
                 </button>
             </Link>
-            <Link href={`${user && user.admin === true ? '/dashboard' : '/sign-in'}`}>
-                <button className='cursor-point hidden lg:flex   px-12 py-4 bg-[#FAFAFA] hover:drop-shadow-md'>
-                    Dashboard
-                </button>
-            </Link>
         </div>
         <div  onClick={() => scrollTo('contact')} className='bg-[#222222] hover:bg-black cursor-pointer text-[#FAFAFA] w-[10%] h-[50px] flex items-center justify-center hidden lg:block'>
             <button type='submit' className='w-full h-full'>
