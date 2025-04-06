@@ -12,7 +12,7 @@ export default function AboutUs() {
                 <div className='w-full'>
                     <Image 
                     className='w-full'
-                    src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2Fplaceholder-profile.png?alt=media&token=6e38ba49-8a50-4eab-bd27-9418aa694c3b' 
+                    src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2Fjasmin_huremovic.jpg?alt=media&token=5cb4e072-6053-44bf-b402-34a07934340a' 
                     alt="owner" 
                     width={500} 
                     height={500}
@@ -57,11 +57,11 @@ export default function AboutUs() {
     <div className='flex flex-col justify-center items-center md:gap-10 lg:gap-0 md:flex-row md:justify-around px-8 py-12 text-[#FAFAFA]'>
         <div className='text-center mt-6'>
             <h3 className='text-slate-200 text-4xl'>GODINE ISKUSTVA</h3>
-            <p className='text-6xl font-semibold mt-6'>15</p>
+            <p className='text-6xl font-semibold mt-6'>15+</p>
         </div>
         <div className='text-center mt-6'>
             <h3 className='text-slate-200 text-4xl'>PROJEKTI</h3>
-            <p className='text-6xl font-semibold mt-6'>50+</p>
+            <p className='text-6xl font-semibold mt-6'>500+</p>
         </div>
         <div className='text-center mt-6'>
             <h3 className='text-slate-200 text-4xl'>ZADOVOLJNI KLIJENTI</h3>
