@@ -8,12 +8,16 @@ import { FaFacebookSquare } from "react-icons/fa";
 import Link from 'next/link';
 import { IoIosSettings } from "react-icons/io";
 import { FaRegCopyright } from "react-icons/fa";
+import { auth } from '@/auth';
+import { FooterBottom } from './footerBottom';
 export default function Footer() {
 
     const scrollTo = (route: any) => {
         const element = document.getElementById(`${route}`);
         if (element) element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
       }
+
+      
 
   return (
     <footer className='bg-[#353C40] text-[#FAFAFA]'>
@@ -69,13 +73,8 @@ export default function Footer() {
             </ul>
         </div>
       </div>
-      <div className='flex items-center justify-center pb-10'>
-        <FaRegCopyright size={16}/>
-        <p className='ml-2'>2024 All rights reserved</p>
-        <a className='ml-20' href='https://www.code-design.ba/dashboard' target='_blank'>
-          <IoIosSettings size={24}/>
-        </a>
-      </div>
+      <FooterBottom />
+      
     </footer>
   )
 }
