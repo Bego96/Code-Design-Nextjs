@@ -118,7 +118,7 @@ export default function Brands() {
   }, []);
 
   return (
-    <div className='mt-20 bg-[#FAFAFA] cursor-pointer py-8'>
+    <div className='mt-20 bg-transparent cursor-pointer py-8'>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={30}

@@ -24,7 +24,7 @@ export default function HomeSidebarMain({user}: any) {
     }
 
   return (
-    <aside className={`fixed inset-y-0 right-0 z-50 flex flex-col bg-[#FAFAFA] shadow-lg transition-transform duration-300 ease-in-out transform ${
+    <aside className={`fixed inset-y-0 right-0 z-[1100] flex flex-col bg-[#FAFAFA] shadow-lg transition-transform duration-300 ease-in-out transform ${
         sidebarVisibility ? 'translate-x-0' : 'translate-x-full'
     } w-full xs:w-[85%] sm:w-[70%] md:w-[60%] lg:w-[40%] xl:w-[30%] h-full lg:hidden`}>
         <div className="flex items-center justify-between p-6 border-b border-gray-200">

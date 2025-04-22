@@ -1,73 +1,101 @@
+'use client'
+
 import Image from 'next/image'
 import React from 'react'
 import AnimatedSection from '@/app/components/AnimatedSection'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import '@/app/styles/slider.css'
 
 export default function Bim() {
   return (
-    <div className='bg-[#516795] p-4 md:p-8 gap-8 flex flex-col mx-4 xl:mx-14 2xl:mx-32 mt-20'>
-        <AnimatedSection delay={0.2}>
-            <h3 className='text-[#FAFAFA] text-4xl font-bold mb-16'>BIM IZGRADNJA</h3>
-        </AnimatedSection>
-
-        {/* Text content - will appear first on mobile */}
-        <AnimatedSection delay={0.4} className='lg:hidden'>
-            <div className='bg-[#FAFAFA] text-[#495057] p-4 md:p-8'>
-                <p className='text-xl'><span className='font-semibold'>BIM</span> je napredni sistem koji koristi <span className='font-semibold'>3D model</span> objekta kao osnovu, ali također uključuje širok spektar informacija kao što su:</p>
-                <ul className='ml-6 list-disc'>
-                    <li className='text-xl'><span className='font-semibold'>Geodetske koordinate:</span> Precizni podaci o lokaciji i orijentaciji objekta u fizičkom prostoru.</li>
-                    <li className='text-xl'><span className='font-semibold'>Materijali:</span> Podaci o materijalima korištenim u gradnji, uključujući količine, svojstva poput toplinske provodljivosti, mase, čvrstoće, te informacije o proizvođačima i cjenama.</li>
-                    <li className='text-xl'><span className='font-semibold'>Elementi dizajna:</span>  Podaci o pojedinim arhitektonskim i konstrukcijskim elementima, kao što su vrata, prozori, zidovi, stubovi i krovovi.</li>
-                    <li className='text-xl'><span className='font-semibold'>Struktura troškova:</span>  Cijene i troškovi materijala, radne snage, opreme i drugih resursa potrebnih za izgradnju.</li>
-                </ul>
-                <p className='text-xl mt-8'><span className='font-semibold'>BIM</span> se naziva i <span className='font-semibold'>5D modeliranjem</span> jer omogućava praćenje faza izgradnje, a kasnije i održavanje objekta, s dodatnim informacijama koje prelaze okvir 3D modela, a te dodatne dimenzije su:
-                </p>
-                <ul className='ml-6 list-disc'>
-                    <li className='text-xl'><span className='font-semibold'>Vremenski raspored (4D):</span> Praćenje izgradnje kroz vrijeme, s rasporedom radova, vezama između aktivnosti i vremenskom linijom.
-                    </li>
-                    <li className='text-xl'><span className='font-semibold'>Troškovi i budžeti (5D):</span> Praćenje i upravljanje troškovima tokom izgradnje i održavanja, s mogućnošću praćenja promjena u budžetu i procjene troškova kroz vrijeme.</li>
-                </ul>
-            </div>
-        </AnimatedSection>
-
-        {/* Images section */}
-        <div className='flex flex-col gap-8'>
-            <AnimatedSection delay={0.6}>
-                <div className='w-full'>
-                    <Image className='w-full' height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F587dbe06c18483e337cfd3b5a44c1796.png?alt=media&token=8061349d-6f53-472c-bc8a-be00fe845b02'/>
+    <div className='bg-[#516795] p-4 md:p-8 gap-8 flex flex-col lg:flex-row mx-4 xl:mx-14 2xl:mx-32 mt-20'>
+        <div className='w-full lg:w-1/2'>
+            <AnimatedSection delay={0.2}>
+                <h3 className='text-[#FAFAFA] text-4xl font-bold mb-16'>BIM IZGRADNJA</h3>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={0.4}>
+                <div className='w-full mb-8'>
+                    <Image 
+                        className='w-full' 
+                        height={800} 
+                        width={800} 
+                        alt="Bim" 
+                        src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F587dbe06c18483e337cfd3b5a44c1796.png?alt=media&token=8061349d-6f53-472c-bc8a-be00fe845b02'
+                    />
                 </div>
             </AnimatedSection>
-            <AnimatedSection delay={0.8}>
+
+            <AnimatedSection delay={0.6}>
                 <div className='w-full'>
-                    <Image className='w-full' height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F8a6cd76bd23214cdc6077a98084e6424.png?alt=media&token=79f5f872-db00-4622-b135-82e3dfef7802'/>
+                    <Image 
+                        className='w-full' 
+                        height={800} 
+                        width={800} 
+                        alt="Bim" 
+                        src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F8a6cd76bd23214cdc6077a98084e6424.png?alt=media&token=79f5f872-db00-4622-b135-82e3dfef7802'
+                    />
                 </div>
             </AnimatedSection>
         </div>
 
-        {/* Text content - will appear on the right side on larger screens */}
-        <AnimatedSection delay={1.0} className='hidden lg:block lg:w-1/2'>
-            <div className='bg-[#FAFAFA] text-[#495057] p-4 md:p-8'>
-                <p className='text-xl'><span className='font-semibold'>BIM</span> je napredni sistem koji koristi <span className='font-semibold'>3D model</span> objekta kao osnovu, ali također uključuje širok spektar informacija kao što su:</p>
-                <ul className='ml-6 list-disc'>
-                    <li className='text-xl'><span className='font-semibold'>Geodetske koordinate:</span> Precizni podaci o lokaciji i orijentaciji objekta u fizičkom prostoru.</li>
-                    <li className='text-xl'><span className='font-semibold'>Materijali:</span> Podaci o materijalima korištenim u gradnji, uključujući količine, svojstva poput toplinske provodljivosti, mase, čvrstoće, te informacije o proizvođačima i cjenama.</li>
-                    <li className='text-xl'><span className='font-semibold'>Elementi dizajna:</span>  Podaci o pojedinim arhitektonskim i konstrukcijskim elementima, kao što su vrata, prozori, zidovi, stubovi i krovovi.</li>
-                    <li className='text-xl'><span className='font-semibold'>Struktura troškova:</span>  Cijene i troškovi materijala, radne snage, opreme i drugih resursa potrebnih za izgradnju.</li>
-                </ul>
-                <p className='text-xl mt-8'><span className='font-semibold'>BIM</span> se naziva i <span className='font-semibold'>5D modeliranjem</span> jer omogućava praćenje faza izgradnje, a kasnije i održavanje objekta, s dodatnim informacijama koje prelaze okvir 3D modela, a te dodatne dimenzije su:
-                </p>
-                <ul className='ml-6 list-disc'>
-                    <li className='text-xl'><span className='font-semibold'>Vremenski raspored (4D):</span> Praćenje izgradnje kroz vrijeme, s rasporedom radova, vezama između aktivnosti i vremenskom linijom.
-                    </li>
-                    <li className='text-xl'><span className='font-semibold'>Troškovi i budžeti (5D):</span> Praćenje i upravljanje troškovima tokom izgradnje i održavanja, s mogućnošću praćenja promjena u budžetu i procjene troškova kroz vrijeme.</li>
-                </ul>
-            </div>
-        </AnimatedSection>
-
-        <AnimatedSection delay={1.2}>
-            <div className='w-full mt-8'>
-                <Image className='w-full' height={800} width={800} alt="Bim" src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F6824b57d0411573670156e181bc0a85b.png?alt=media&token=13808b41-75b5-4bdc-aba6-edb6f0ff008c' />
-            </div>
-        </AnimatedSection>
+        <div className='w-full lg:w-1/2 flex flex-col'>
+            <AnimatedSection delay={0.4}>
+                <div className='bg-[#FAFAFA] text-[#495057] p-4 md:p-8 flex-grow'>
+                    <p className='text-xl'><span className='font-semibold'>BIM</span> je napredni sistem koji koristi <span className='font-semibold'>3D model</span> objekta kao osnovu, ali također uključuje širok spektar informacija kao što su:</p>
+                    <ul className='ml-6 list-disc'>
+                        <li className='text-xl'><span className='font-semibold'>Geodetske koordinate:</span> Precizni podaci o lokaciji i orijentaciji objekta u fizičkom prostoru.</li>
+                        <li className='text-xl'><span className='font-semibold'>Materijali:</span> Podaci o materijalima korištenim u gradnji, uključujući količine, svojstva poput toplinske provodljivosti, mase, čvrstoće, te informacije o proizvođačima i cjenama.</li>
+                        <li className='text-xl'><span className='font-semibold'>Elementi dizajna:</span>  Podaci o pojedinim arhitektonskim i konstrukcijskim elementima, kao što su vrata, prozori, zidovi, stubovi i krovovi.</li>
+                        <li className='text-xl'><span className='font-semibold'>Struktura troškova:</span>  Cijene i troškovi materijala, radne snage, opreme i drugih resursa potrebnih za izgradnju.</li>
+                    </ul>
+                    <p className='text-xl mt-8'><span className='font-semibold'>BIM</span> se naziva i <span className='font-semibold'>5D modeliranjem</span> jer omogućava praćenje faza izgradnje, a kasnije i održavanje objekta, s dodatnim informacijama koje prelaze okvir 3D modela, a te dodatne dimenzije su:</p>
+                    <ul className='ml-6 list-disc'>
+                        <li className='text-xl'><span className='font-semibold'>Vremenski raspored (4D):</span> Praćenje izgradnje kroz vrijeme, s rasporedom radova, vezama između aktivnosti i vremenskom linijom.</li>
+                        <li className='text-xl'><span className='font-semibold'>Troškovi i budžeti (5D):</span> Praćenje i upravljanje troškovima tokom izgradnje i održavanja, s mogućnošću praćenja promjena u budžetu i procjene troškova kroz vrijeme.</li>
+                    </ul>
+                </div>
+            </AnimatedSection>
+            
+            <AnimatedSection delay={0.6}>
+                <div className='w-full mt-8 h-[600px]'>
+                    <div className="slider-container h-full">
+                        <Swiper
+                            spaceBetween={30}
+                            slidesPerView={1}
+                            navigation={true}
+                            pagination={{ clickable: true }}
+                            modules={[Navigation, Pagination, Autoplay]}
+                            autoplay={{
+                                delay: 5000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true
+                            }}
+                            speed={1000}
+                            loop={true}
+                            className="w-full h-full"
+                        >
+                            <SwiperSlide className="h-full">
+                                <div className="relative w-full h-full">
+                                    <Image 
+                                        className='object-contain'
+                                        fill
+                                        sizes="100vw"
+                                        priority
+                                        alt="Bim" 
+                                        src='https://firebasestorage.googleapis.com/v0/b/code-design-36e78.appspot.com/o/images%2F6824b57d0411573670156e181bc0a85b.png?alt=media&token=13808b41-75b5-4bdc-aba6-edb6f0ff008c' 
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
+                </div>
+            </AnimatedSection>
+        </div>
     </div>
   )
 }

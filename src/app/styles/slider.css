@@ -1,0 +1,77 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: transparent !important;
+}
+
+.slider-container {
+  position: relative;
+  background-color: transparent !important;
+}
+
+.slider-container .swiper-button-next,
+.slider-container .swiper-button-prev {
+  opacity: 0;
+  color: #FAFAFA !important;
+  background-color: rgba(81, 103, 149, 0.7);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slider-container:hover .swiper-button-next,
+.slider-container:hover .swiper-button-prev {
+  opacity: 1;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(81, 103, 149, 0.9);
+  transform: scale(1.1);
+}
+
+.swiper-slide {
+  text-align: center;
+  background: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background: #516795 !important;
+  opacity: 0.5;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 12px;
+  height: 12px;
+}
+
+/* Ensure all swiper structure has no background */
+.swiper,
+.swiper-container,
+.swiper-wrapper,
+.slider-container {
+  background: transparent !important;
+} 

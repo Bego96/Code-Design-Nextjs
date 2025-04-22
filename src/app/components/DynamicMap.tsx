@@ -18,12 +18,12 @@ export default function DynamicMap({ latitude, longitude, companyName, address }
     Promise.all([
       import('leaflet'),
       import('react-leaflet'),
-    ]).then(([L, { MapContainer, TileLayer, Marker, Popup }]) => {
+    ]).then(([L, { MapContainer, TileLayer, Marker, Popup, Tooltip }]) => {
       // Configure the icon
       const icon = L.icon({
-        iconUrl: '/marker-icon.png',
-        iconRetinaUrl: '/marker-icon-2x.png',
-        shadowUrl: '/marker-shadow.png',
+        iconUrl: new URL('leaflet/dist/images/marker-icon.png', import.meta.url).href,
+        iconRetinaUrl: new URL('leaflet/dist/images/marker-icon-2x.png', import.meta.url).href,
+        shadowUrl: new URL('leaflet/dist/images/marker-shadow.png', import.meta.url).href,
         iconSize: [25, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
@@ -32,10 +32,10 @@ export default function DynamicMap({ latitude, longitude, companyName, address }
 
       // Create the map component
       setMap(
-        <div className="w-full h-[600px] rounded-lg overflow-hidden">
+        <div className="relative z-0 w-full h-[600px] rounded-lg overflow-hidden">
           <MapContainer
             center={[latitude, longitude]}
-            zoom={15}
+            zoom={17}
             style={{ height: '100%', width: '100%' }}
           >
             <TileLayer
@@ -43,6 +43,12 @@ export default function DynamicMap({ latitude, longitude, companyName, address }
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={[latitude, longitude]} icon={icon}>
+              <Tooltip direction="top" offset={[0, -20]} opacity={1}>
+                <div className="text-center px-2">
+                  <h3 className="font-bold text-sm">{companyName}</h3>
+                  <p className="text-xs">{address}</p>
+                </div>
+              </Tooltip>
               <Popup>
                 <div className="text-center">
                   <h3 className="font-bold">{companyName}</h3>

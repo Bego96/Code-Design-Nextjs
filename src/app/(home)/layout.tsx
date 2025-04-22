@@ -31,7 +31,7 @@ export default function RootLayout({
  
 
   return (
-    <html lang="en" className={`${bankGothic.variable}`}>
+    <html lang="en" className={`${bankGothic.variable} scroll-smooth`}>
       <body className="relative bg-[#FAFAFA]">
         
       <HomeSidebar />

@@ -147,9 +147,9 @@ export default function Project({ id }: Props) {
 
       {/* Full Screen Modal */}
       {isFullScreen && project && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-[2000] flex items-center justify-center">
           <button
-            className="absolute top-4 right-4 text-white text-4xl z-50"
+            className="absolute top-4 right-4 text-white text-4xl z-[2100]"
             onClick={() => setIsFullScreen(false)}
           >
             <IoMdClose />

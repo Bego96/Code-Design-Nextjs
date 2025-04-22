@@ -11,24 +11,26 @@ import AnimatedSection from "../components/AnimatedSection";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
-      <AnimatedSection delay={0.2}>
-        <Brands />
-      </AnimatedSection>
-      <AnimatedSection delay={0.4}>
-        <AboutUs />
-      </AnimatedSection>
-      <AnimatedSection delay={0.6}>
-        <Services />
-      </AnimatedSection>
-      <AnimatedSection delay={0.8}>
-        <NewProjects />
-      </AnimatedSection>
-      <AnimatedSection delay={1}>
-        <ContactUs />
-      </AnimatedSection>
-    </div>
+      <div id="top" className="px-4 md:px-8 lg:px-16">
+        <AnimatedSection delay={0.2}>
+          <Brands />
+        </AnimatedSection>
+        <AnimatedSection delay={0.4}>
+          <AboutUs />
+        </AnimatedSection>
+        <AnimatedSection delay={0.6}>
+          <Services />
+        </AnimatedSection>
+        <AnimatedSection delay={0.8}>
+          <NewProjects />
+        </AnimatedSection>
+        <AnimatedSection delay={1}>
+          <ContactUs />
+        </AnimatedSection>
+      </div>
+    </>
   );
 }
 

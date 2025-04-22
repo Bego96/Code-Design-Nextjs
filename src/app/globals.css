@@ -5,4 +5,21 @@
 .swiper-container {
   display: flex;
   align-items: center;
+  background: transparent !important;
+}
+
+/* Remove all Swiper backgrounds globally */
+.swiper,
+.swiper-container,
+.swiper-wrapper,
+.slider-container,
+.swiper-slide {
+  background: transparent !important;
+}
+
+/* Lower Leaflet controls below navbar (z-1000) */
+.leaflet-top,
+.leaflet-bottom,
+.leaflet-control-container {
+  z-index: 999 !important;
 }

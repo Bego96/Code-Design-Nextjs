@@ -4,6 +4,7 @@ import React from 'react'
 import { PiArrowSquareInFill } from "react-icons/pi";
 import { useRouter } from 'next/navigation';
 import AnimatedSection from '@/app/components/AnimatedSection';
+import CountUp from 'react-countup'
 
 export default function Header() {
     const router = useRouter();
@@ -22,23 +23,23 @@ export default function Header() {
                         />
                         <div className='absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 opacity-0 group-hover:opacity-100'></div>
                     </div>
-                    <div className='text-[#FAFAFA] mt-10 bg-[#6D89C7] p-6 rounded-lg shadow-lg transform hover:-translate-y-1 transition-transform duration-300'>
-                        <h2 className='text-2xl font-bold mb-2'>CODE Design</h2>
-                        <p className='text-xl mb-4'>Architecture & Project Management</p>
-                        <div className='border-t border-white/20 pt-4'>
-                            <h2 className='text-2xl font-bold mb-2'>Osnivač:</h2>
-                            <p className='text-xl'>Jasmin Huremović dipl.ing.arh.</p>
-                        </div>
-                    </div>
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.4} className='w-full lg:w-1/2'>
-                    <div className='mb-14 xl:mb-0 bg-[#FAFAFA]/10 p-6 rounded-lg backdrop-blur-sm'>
-                        <h2 className='text-4xl font-bold text-[#FAFAFA] mb-8'>O NAMA</h2>
-                        <p className='text-xl text-[#FAFAFA]/90 leading-relaxed'>
+                    <div className='mb-14 xl:mb-0 bg-[#FAFAFA] p-6 rounded-lg'>
+                        <h2 className='text-4xl font-bold text-[#495057] mb-8'>O NAMA</h2>
+                        <p className='text-xl text-[#495057] leading-relaxed'>
                             Arhitektonski biro CODE design d.o.o. počeo je sa radom početkom 2018. godine. Naša firma bavi se arhitektonskim projektovanjem, dizajnom enterijera, 
                             project managementom, nadzorom nad izvođenjem građevinskih radova, tehničkim savjetovanjem i konsaltingom.
                         </p>
+                    </div>
+                    <div className='text-[#495057] mt-10 bg-[#FAFAFA] p-6 rounded-lg'>
+                        <h2 className='text-2xl font-bold mb-2'>CODE Design</h2>
+                        <p className='text-xl mb-4'>Architecture & Project Management</p>
+                        <div className='border-t border-gray-300 pt-4'>
+                            <h2 className='text-2xl font-bold mb-2'>Osnivač:</h2>
+                            <p className='text-xl'>Jasmin Huremović dipl.ing.arh.</p>
+                        </div>
                     </div>
                 </AnimatedSection>
             </div>
@@ -47,15 +48,21 @@ export default function Header() {
                 <div className='flex flex-col justify-center items-center md:items-start md:gap-10 lg:gap-0 md:flex-row md:justify-around px-8 py-12 text-[#FAFAFA] bg-[#6D89C7]/20 backdrop-blur-sm rounded-lg mt-10 mb-10'>
                     <div className='text-center transform hover:scale-105 transition-transform duration-300 p-4'>
                         <h3 className='text-slate-200 text-4xl mb-2'>GODINE ISKUSTVA</h3>
-                        <p className='text-6xl font-semibold mt-2'>15+</p>
+                        <p className='text-6xl font-semibold mt-2'>
+                            <CountUp start={0} end={15} duration={2} suffix="+" enableScrollSpy scrollSpyOnce delay={0.6} />
+                        </p>
                     </div>
                     <div className='text-center transform hover:scale-105 transition-transform duration-300 p-4'>
                         <h3 className='text-slate-200 text-4xl mb-2'>PROJEKTI</h3>
-                        <p className='text-6xl font-semibold mt-2'>500+</p>
+                        <p className='text-6xl font-semibold mt-2'>
+                            <CountUp start={0} end={500} duration={2} suffix="+" enableScrollSpy scrollSpyOnce delay={0.8} />
+                        </p>
                     </div>
                     <div className='text-center transform hover:scale-105 transition-transform duration-300 p-4'>
                         <h3 className='text-slate-200 text-4xl mb-2'>ZADOVOLJNI KLIJENTI</h3>
-                        <p className='text-6xl font-semibold mt-2'>100%</p>
+                        <p className='text-6xl font-semibold mt-2'>
+                            <CountUp start={0} end={100} duration={2} suffix="%" enableScrollSpy scrollSpyOnce delay={1.0} />
+                        </p>
                     </div>
                 </div>
             </AnimatedSection>
