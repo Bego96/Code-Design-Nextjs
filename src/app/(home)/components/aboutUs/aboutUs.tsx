@@ -27,8 +27,14 @@ function useCountUp(end: number, duration: number, sessionKey: string) {
   return count;
 }
 
+interface AnimatedNumberProps {
+  end: number;
+  duration?: number;
+  suffix?: string;
+}
+
 // Animated number that counts from 0 to end when in view
-function AnimatedNumber({ end, duration = 1000, suffix = '+' }) {
+function AnimatedNumber({ end, duration = 1000, suffix = '+' }: AnimatedNumberProps) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
@@ -92,7 +98,7 @@ export default function AboutUs() {
                         <h2 className='text-4xl font-bold mb-4'>O NAMA</h2>
                         <p className='text-xl mt-6'>
                             <span className='mr-4 inline-block w-6 h-[3px] bg-[rgb(250,185,0)] mb-[5px]'></span>
-                            Arhitektonski biro "CODE design d.o.o." bavi se prije svega uslugama arhitektonskog projektovanja, dizajnom enterijera, project managementom, nadzorom nad izvodjenjem građevinskih radova, tehničkim savjetovanjem i konsaltingom. Nas mladi tim nudi drugačiji i efikasan pristup arhitekturi koji vodi klijenta od ideje do realizacije projekta. Primjena savremenih metoda projektovanja, savremenih materijala, optimizacija projekata i usluge project managementa sastavni su dio arhitekture novog doba i u potpunosti su prilagođeni najnovijim svjetskim trendovima.
+                            {`Arhitektonski biro "CODE design d.o.o." bavi se prije svega uslugama arhitektonskog projektovanja, dizajnom enterijera, project managementom, nadzorom nad izvodjenjem građevinskih radova, tehničkim savjetovanjem i konsaltingom. Nas mladi tim nudi drugačiji i efikasan pristup arhitekturi koji vodi klijenta od ideje do realizacije projekta. Primjena savremenih metoda projektovanja, savremenih materijala, optimizacija projekata i usluge project managementa sastavni su dio arhitekture novog doba i u potpunosti su prilagođeni najnovijim svjetskim trendovima.`}
                         </p>
                         <p className='text-xl mt-2'>
                             <span className='mr-4 inline-block w-6 h-[3px] bg-[rgb(250,185,0)] mb-[5px]'></span>
