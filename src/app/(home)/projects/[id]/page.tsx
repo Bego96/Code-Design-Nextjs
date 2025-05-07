@@ -46,10 +46,9 @@ export async function generateStaticParams() {
 }
 
 export default function Projects({ params: { id }}: Props) {
-
-    
     return (
-        <Project id={id}/>
+        <div className="pt-24 px-4 md:px-8 lg:px-16">
+            <Project id={id}/>
+        </div>
     )
-    
 }

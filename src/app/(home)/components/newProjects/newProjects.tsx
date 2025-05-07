@@ -56,13 +56,13 @@ export default function NewProjects() {
     },[]);
 
   return (
-    <div className='mx-8 sm:mx-20 2xl:mx-72 mt-20 text-center'>
+    <div className='mt-20 text-center'>
       {
         projects.length > 0 ? 
         <h2 className='text-4xl font-bold text-[#677582] mb-20'>NOVI PROJEKTI</h2> :
         null
       }
-      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-20'>
+      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-20'>
         
         {
           projects.length > 0 ? projects.map(project => (
@@ -81,10 +81,10 @@ export default function NewProjects() {
       {
         projects.length > 0 ? 
       
-        <Link href='/projects'>
-          <button className='w-full w-1/2 md:w-1/3 lg:w-1/4 xl:w-[15%] mx-auto flex justify-center items-center drop-shadow-xl flex w-full h-[50px] bg-[#6D89C7] hover:bg-[#5C74AA] text-[#FAFAFA]'>
+        <Link href="/projects">
+          <button className="group mx-auto mt-8 inline-flex items-center justify-center px-6 py-3 bg-[#6D89C7] text-[#FAFAFA] font-semibold rounded-full shadow-md transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-[#5C74AA]">
             Ostali projekti
-            <GoArrowUpRight size={22} color='#FAFAFA' className='ml-[4px] mt-[4px]'/>
+            <GoArrowUpRight className="ml-2 w-5 h-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
           </button>
         </Link>
         

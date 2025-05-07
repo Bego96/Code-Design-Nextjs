@@ -1,4 +1,3 @@
-
 'use client'
 import React from 'react'
 import Link from 'next/link'
@@ -25,45 +24,68 @@ export default function HomeSidebarMain({user}: any) {
     }
 
   return (
-    
-        <aside className={`bg-[#FAFAFA] z-50 p-4 shadow-[-4px_1px_22px_-14px_#000000] fixed right-0 top-0 w-full xsm:w-1/2 md:w-1/3 top-0 transition-all ease-in-out duration-150 ${sidebarVisibility ? 'right-0' : 'right-[-100%]'} flex flex-col bg-white h-full lg:right-[-100%]`}>
-        <AiOutlineClose className='absolute top-5 right-5 cursor-pointer' size={25} onClick={() => openSidebar()}/>
-        <div className='mt-14 h-full'>
-            <div className='w-full mt-4'>
-                
-                    <Link href="/" >
-                        <button onClick={() => onChosenLink(null)} className='text-left pl-4 cursor-point w-full py-4 bg-white hover:drop-shadow-md'>
-                            Početna
-                        </button>
-                    </Link>
-                    <Link href="/about-us">
-                        <button onClick={() => onChosenLink(null)} className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
-                            O nama
-                        </button>
-                    </Link>
-                    <Link href="/projects">
-                        <button onClick={() => onChosenLink(null)} className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
-                            Projekti
-                        </button></Link>
-                    <Link href="/#services" scroll={true}>
-                        <button onClick={() => onChosenLink('services')} className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
-                            Usluge
-                        </button>
-                    </Link>
-                    
-               
-                    <Link href="/#contact" scroll={true}>
-                        <button onClick={() => onChosenLink('contact')} className='text-left pl-4 cursor-pointer w-full py-4 bg-white hover:drop-shadow-md'>
-                            Kontakt
-                        </button>
-                    </Link>
-                    
-                
-            </div>
+    <aside className={`fixed inset-y-0 right-0 z-[1100] flex flex-col bg-[#FAFAFA] shadow-lg transition-transform duration-300 ease-in-out transform ${
+        sidebarVisibility ? 'translate-x-0' : 'translate-x-full'
+    } w-full xs:w-[85%] sm:w-[70%] md:w-[60%] lg:w-[40%] xl:w-[30%] h-full lg:hidden`}>
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <h2 className="text-xl font-semibold text-gray-800">CODE Design d.o.o</h2>
+            <button 
+                onClick={() => openSidebar()}
+                className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200"
+                aria-label="Close menu"
+            >
+                <AiOutlineClose size={24} className="text-gray-600" />
+            </button>
         </div>
-        </aside>
-    
-    
-    
+        
+        <nav className="flex-1 overflow-y-auto">
+            <div className="flex flex-col p-4 space-y-2">
+                <Link href="/">
+                    <button 
+                        onClick={() => onChosenLink(null)} 
+                        className="w-full px-4 py-3 text-left rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    >
+                        Početna
+                    </button>
+                </Link>
+                <Link href="/about-us">
+                    <button 
+                        onClick={() => onChosenLink(null)} 
+                        className="w-full px-4 py-3 text-left rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    >
+                        O nama
+                    </button>
+                </Link>
+                <Link href="/projects">
+                    <button 
+                        onClick={() => onChosenLink(null)} 
+                        className="w-full px-4 py-3 text-left rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    >
+                        Projekti
+                    </button>
+                </Link>
+                <Link href="/#services" scroll={true}>
+                    <button 
+                        onClick={() => onChosenLink('services')} 
+                        className="w-full px-4 py-3 text-left rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    >
+                        Usluge
+                    </button>
+                </Link>
+                <Link href="/#contact" scroll={true}>
+                    <button 
+                        onClick={() => onChosenLink('contact')} 
+                        className="w-full px-4 py-3 text-left rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                    >
+                        Kontakt
+                    </button>
+                </Link>
+            </div>
+        </nav>
+        
+        <div className="p-4 border-t border-gray-200">
+            <p className="text-sm text-gray-500 text-center">© 2024 CODE Design</p>
+        </div>
+    </aside>
   )
 }

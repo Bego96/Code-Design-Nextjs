@@ -8,7 +8,7 @@ import { HomeNav } from '../components/homeNav/homeNav'
 
 export default function AboutUs() {
   return (
-    <div>
+    <div className='pt-24 px-4 md:px-8 lg:px-16'>
      
         <Header />
         <OurVision />

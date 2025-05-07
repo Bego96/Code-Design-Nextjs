@@ -118,22 +118,27 @@ export default function Brands() {
   }, []);
 
   return (
-    <div className='mt-20 bg-[#FAFAFA] cursor-pointer'>
+    <div className='mt-20 bg-transparent cursor-pointer py-8'>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={5}
+        spaceBetween={30}
         slidesPerView={slidesPerView}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
         navigation
         style={customStyles}
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
       >
         {brands.map((brand) => (
           <SwiperSlide key={brand.id}>
             <a href={brand.link} target="_blank" rel="noopener noreferrer">
-              <div className='w-[30%] mx-auto'>
+              <div className='w-[60%] mx-auto hover:scale-105 transition-transform duration-300'>
                 <Image
-                  className="w-full"
+                  className="w-full object-contain"
                   height={500}
                   width={500}
                   src={brand.imgSrc}
